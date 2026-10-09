@@ -55,17 +55,17 @@
       </a>
 
       <!-- Header Navigation Links (Desktop) -->
-      <nav class="hidden md:flex items-center gap-8 text-sm font-semibold text-gray-700">
+      <nav class="hidden md:flex items-center gap-6 text-sm font-semibold text-gray-700">
         <a href="#bread"
-          class="hover:text-black hover:underline decoration-smile decoration-2 underline-offset-8 transition">Korean
-          Bread</a>
+          class="hover:text-black hover:underline decoration-smile decoration-2 underline-offset-8 transition">Korean Bread</a>
         <a href="#food"
           class="hover:text-black hover:underline decoration-smile decoration-2 underline-offset-8 transition">Food</a>
         <a href="#drinks"
           class="hover:text-black hover:underline decoration-smile decoration-2 underline-offset-8 transition">Drinks</a>
+        <!-- Dynamically injected links for custom categories -->
+        <span id="customNavLinks" class="flex items-center gap-6"></span>
         <a href="#owner"
-          class="hover:text-black hover:underline decoration-smile decoration-2 underline-offset-8 transition">About us
-        </a>
+          class="hover:text-black hover:underline decoration-smile decoration-2 underline-offset-8 transition">About Us</a>
       </nav>
 
       <!-- Mobile Hamburger Menu Button (Mobile only) -->
@@ -112,6 +112,8 @@
           </span>
           <span class="text-xs text-amber-800/70 font-medium">Authentic brews</span>
         </a>
+        <!-- Dynamic mobile links for custom categories -->
+        <div id="mobileCustomNavLinks" class="flex flex-col space-y-2"></div>
         <a href="#owner"
           class="mobile-nav-link flex items-center justify-between py-2.5 px-3 rounded-xl hover:bg-smile-light transition">
           <span class="flex items-center gap-2.5">
@@ -183,108 +185,11 @@
         </div>
       </div>
 
-      <!-- Grid Cards -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-
-        <!-- Card 1 -->
-        <div
-          class="group bg-white p-3.5 rounded-2xl border border-line shadow-xs hover:shadow-md hover:border-amber-300 transition duration-300">
-          <div class="relative aspect-square w-full rounded-xl overflow-hidden bg-amber-50 mb-3">
-            <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=800&q=80"
-              alt="Cream Cheese Garlic Bread"
-              class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-            <div class="absolute top-3 left-3">
-              <span
-                class="bg-smile text-gray-950 font-extrabold text-[11px] px-2.5 py-1 rounded-md shadow-xs flex items-center gap-1">
-                ⭐ Fan favorite</span>
-            </div>
-          </div>
-          <p class="text-[11px] uppercase tracking-widest text-amber-700 font-bold mb-0.5">KOREAN BREAD</p>
-          <h3 class="text-base font-bold text-gray-900 group-hover:text-amber-900 transition">Cream Cheese Garlic Bread
-          </h3>
-          <div class="flex items-center justify-between mt-2 text-sm pt-2 border-t border-line/60">
-            <span class="font-extrabold text-gray-950 text-base">$13.00</span>
-            <button
-              onclick="showDetails('Cream Cheese Garlic Bread', '$13.00', 'Sweetened cream cheese nestled in a scored brioche bun soaked in sweet roasted garlic custard butter.')"
-              class="px-3 py-1.5 rounded-lg bg-smile-light hover:bg-smile text-gray-900 font-bold text-xs border border-amber-200/80 shadow-xs transition">Quick
-              Add</button>
-          </div>
-        </div>
-
-        <!-- Card 2 -->
-        <div
-          class="group bg-white p-3.5 rounded-2xl border border-line shadow-xs hover:shadow-md hover:border-amber-300 transition duration-300">
-          <div class="relative aspect-square w-full rounded-xl overflow-hidden bg-amber-50 mb-3">
-            <img src="https://images.unsplash.com/photo-1586444248902-2f64eddc13df?auto=format&fit=crop&w=800&q=80"
-              alt="Sweet Red Bean Bun" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-            <div class="absolute top-3 left-3">
-              <span
-                class="bg-smile text-gray-950 font-extrabold text-[11px] px-2.5 py-1 rounded-md shadow-xs flex items-center gap-1">
-                🔥 Best Seller</span>
-            </div>
-          </div>
-          <p class="text-[11px] uppercase tracking-widest text-amber-700 font-bold mb-0.5">KOREAN BREAD</p>
-          <h3 class="text-base font-bold text-gray-900 group-hover:text-amber-900 transition">Sweet Red Bean Bun
-            (Danpat)</h3>
-          <div class="flex items-center justify-between mt-2 text-sm pt-2 border-t border-line/60">
-            <span class="font-extrabold text-gray-950 text-base">$4.50</span>
-            <button
-              onclick="showDetails('Sweet Red Bean Bun (Danpat)', '$4.50', 'Traditional artisan sweet red bean filling wrapped in ultra-soft pillowy milk dough, crowned with black sesame seeds.')"
-              class="px-3 py-1.5 rounded-lg bg-smile-light hover:bg-smile text-gray-900 font-bold text-xs border border-amber-200/80 shadow-xs transition">Quick
-              Add</button>
-          </div>
-        </div>
-
-        <!-- Card 3 -->
-        <div
-          class="group bg-white p-3.5 rounded-2xl border border-line shadow-xs hover:shadow-md hover:border-amber-300 transition duration-300">
-          <div class="relative aspect-square w-full rounded-xl overflow-hidden bg-amber-50 mb-3">
-            <img src="https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=800&q=80"
-              alt="Twisted Sugar Doughnut"
-              class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-            <div class="absolute top-3 left-3">
-              <span
-                class="bg-smile text-gray-950 font-extrabold text-[11px] px-2.5 py-1 rounded-md shadow-xs flex items-center gap-1">
-                ⚡ Popular</span>
-            </div>
-          </div>
-          <p class="text-[11px] uppercase tracking-widest text-amber-700 font-bold mb-0.5">KOREAN BREAD</p>
-          <h3 class="text-base font-bold text-gray-900 group-hover:text-amber-900 transition">Twisted Sugar Doughnut
-            (Kkwabaegi)</h3>
-          <div class="flex items-center justify-between mt-2 text-sm pt-2 border-t border-line/60">
-            <span class="font-extrabold text-gray-950 text-base">$3.50</span>
-            <button
-              onclick="showDetails('Twisted Sugar Doughnut (Kkwabaegi)', '$3.50', 'Chewy glutinous rice dough fried golden and dusted in cinnamon sugar.')"
-              class="px-3 py-1.5 rounded-lg bg-smile-light hover:bg-smile text-gray-900 font-bold text-xs border border-amber-200/80 shadow-xs transition">Quick
-              Add</button>
-          </div>
-        </div>
-
+      <!-- Grid Cards (Dynamic Catalog) -->
+      <div id="breadGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Dynamic cards will be rendered here -->
       </div>
 
-      <!-- Wide Featured Card -->
-      <div
-        class="mt-8 rounded-2xl bg-white border border-line p-5 sm:p-6 shadow-xs hover:border-amber-300 transition duration-300">
-        <div class="relative w-full h-64 md:h-80 rounded-xl overflow-hidden bg-amber-50 mb-4">
-          <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=1200&q=80"
-            alt="Cream Cheese Garlic Bread Wide" class="w-full h-full object-cover">
-          <div class="absolute top-4 left-4">
-            <span
-              class="bg-smile text-gray-950 font-extrabold text-xs px-3 py-1.5 rounded-md shadow-xs flex items-center gap-1.5">
-              ⭐ Signature Duo Set</span>
-          </div>
-        </div>
-        <p class="text-[11px] uppercase tracking-widest text-amber-700 font-bold mb-1">KOREAN BREAD</p>
-        <h3 class="text-xl font-bold text-gray-900">Cream Cheese Garlic Bread Duo Box</h3>
-        <p class="text-sm text-gray-600 mb-4">Korean butter and garlic bread with double cream cheese.</p>
-        <div class="flex items-center justify-between text-base pt-3 border-t border-line/60">
-          <span class="font-extrabold text-gray-900 text-lg">$25.00</span>
-          <button
-            onclick="showDetails('Cream Cheese Garlic Bread Duo Box', '$25.00', 'Two large signature Korean garlic loaves packed into an insulated gift box.')"
-            class="px-4 py-2 rounded-xl bg-smile hover:bg-smile-hover text-gray-950 font-bold text-xs uppercase tracking-wider shadow-xs hover:shadow transition">Quick
-            Add</button>
-        </div>
-      </div>
     </section>
 
     <!-- 2. Food Section -->
@@ -300,55 +205,9 @@
         </div>
       </div>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-
-        <!-- Card 1 -->
-        <div
-          class="group bg-white p-3.5 rounded-2xl border border-line shadow-xs hover:shadow-md hover:border-amber-300 transition duration-300">
-          <div class="relative aspect-square w-full rounded-xl overflow-hidden bg-amber-50 mb-3">
-            <img src="https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=800&q=80"
-              alt="Ramen Noodles" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-            <div class="absolute top-3 left-3">
-              <span
-                class="bg-smile text-gray-950 font-extrabold text-[11px] px-2.5 py-1 rounded-md shadow-xs flex items-center gap-1">
-                🔥 Best Seller</span>
-            </div>
-          </div>
-          <p class="text-[11px] uppercase tracking-widest text-amber-700 font-bold mb-0.5">KOREAN FOOD</p>
-          <h3 class="text-base font-bold text-gray-900 group-hover:text-amber-900 transition">Ramen Noodles</h3>
-          <div class="flex items-center justify-between mt-2 text-sm pt-2 border-t border-line/60">
-            <span class="font-extrabold text-gray-950 text-base">$12.00</span>
-            <button
-              onclick="showDetails('Ramen Noodles', '$12.00', 'Rich bone broth ramen served with scallions, cured yolk, and chewy wheat noodles.')"
-              class="px-3 py-1.5 rounded-lg bg-smile-light hover:bg-smile text-gray-900 font-bold text-xs border border-amber-200/80 shadow-xs transition">Quick
-              Add</button>
-          </div>
-        </div>
-
-        <!-- Card 2 -->
-        <div
-          class="group bg-white p-3.5 rounded-2xl border border-line shadow-xs hover:shadow-md hover:border-amber-300 transition duration-300">
-          <div class="relative aspect-square w-full rounded-xl overflow-hidden bg-amber-50 mb-3">
-            <img src="https://images.unsplash.com/photo-1612927601601-6638404737ce?auto=format&fit=crop&w=800&q=80"
-              alt="Buldak Spicy Noodles"
-              class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-            <div class="absolute top-3 left-3">
-              <span
-                class="bg-smile text-gray-950 font-extrabold text-[11px] px-2.5 py-1 rounded-md shadow-xs flex items-center gap-1">
-                🔥 Best Seller</span>
-            </div>
-          </div>
-          <p class="text-[11px] uppercase tracking-widest text-amber-700 font-bold mb-0.5">KOREAN FOOD</p>
-          <h3 class="text-base font-bold text-gray-900 group-hover:text-amber-900 transition">Buldak Spicy Noodles</h3>
-          <div class="flex items-center justify-between mt-2 text-sm pt-2 border-t border-line/60">
-            <span class="font-extrabold text-gray-950 text-base">$14.00</span>
-            <button
-              onclick="showDetails('Buldak Spicy Noodles', '$14.00', 'Fiery Korean hot chicken stir-fried noodles topped with toasted nori and roasted sesame seeds.')"
-              class="px-3 py-1.5 rounded-lg bg-smile-light hover:bg-smile text-gray-900 font-bold text-xs border border-amber-200/80 shadow-xs transition">Quick
-              Add</button>
-          </div>
-        </div>
-
+      <!-- Grid Cards (Dynamic Catalog) -->
+      <div id="foodGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Dynamic cards will be rendered here -->
       </div>
     </section>
 
@@ -366,89 +225,58 @@
         </div>
       </div>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-
-        <!-- Card 1 -->
-        <div
-          class="group bg-white p-3.5 rounded-2xl border border-line shadow-xs hover:shadow-md hover:border-amber-300 transition duration-300">
-          <div class="relative aspect-square w-full rounded-xl overflow-hidden bg-amber-50 mb-3">
-            <img src="https://images.unsplash.com/photo-1527661591475-527312dd65f5?auto=format&fit=crop&w=800&q=80"
-              alt="Milkis / Banana Milk Drinks"
-              class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-            <div class="absolute top-3 left-3">
-              <span
-                class="bg-smile text-gray-950 font-extrabold text-[11px] px-2.5 py-1 rounded-md shadow-xs flex items-center gap-1">
-                ⚡ Popular</span>
-            </div>
-          </div>
-          <p class="text-[11px] uppercase tracking-widest text-amber-700 font-bold mb-0.5">DRINKS</p>
-          <h3 class="text-base font-bold text-gray-900 group-hover:text-amber-900 transition">Milkis / Banana Milk
-            Drinks</h3>
-          <div class="flex items-center justify-between mt-2 text-sm pt-2 border-t border-line/60">
-            <span class="font-extrabold text-gray-950 text-base">$12.00</span>
-            <button
-              onclick="showDetails('Milkis / Banana Milk Drinks', '$12.00', 'Pack of 4: classic sweet Binggrae banana milk and fizzy Milkis yogurt soft drinks.')"
-              class="px-3 py-1.5 rounded-lg bg-smile-light hover:bg-smile text-gray-900 font-bold text-xs border border-amber-200/80 shadow-xs transition">Quick
-              Add</button>
-          </div>
-        </div>
-
-        <!-- Card 2 -->
-        <div
-          class="group bg-white p-3.5 rounded-2xl border border-line shadow-xs hover:shadow-md hover:border-amber-300 transition duration-300">
-          <div class="relative aspect-square w-full rounded-xl overflow-hidden bg-amber-50 mb-3">
-            <img src="https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&w=800&q=80"
-              alt="Chilsung Cider & Yuzu Ade"
-              class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-            <div class="absolute top-3 left-3">
-              <span
-                class="bg-smile text-gray-950 font-extrabold text-[11px] px-2.5 py-1 rounded-md shadow-xs flex items-center gap-1">
-                🔥 Best Seller</span>
-            </div>
-          </div>
-          <p class="text-[11px] uppercase tracking-widest text-amber-700 font-bold mb-0.5">DRINKS</p>
-          <h3 class="text-base font-bold text-gray-900 group-hover:text-amber-900 transition">Chilsung Cider & Yuzu Ade
-          </h3>
-          <div class="flex items-center justify-between mt-2 text-sm pt-2 border-t border-line/60">
-            <span class="font-extrabold text-gray-950 text-base">$4.00</span>
-            <button
-              onclick="showDetails('Chilsung Cider & Yuzu Ade', '$4.00', 'Crisp lemon-lime Korean soda served ice-cold with aromatic candied citrus yuzu peel.')"
-              class="px-3 py-1.5 rounded-lg bg-smile-light hover:bg-smile text-gray-900 font-bold text-xs border border-amber-200/80 shadow-xs transition">Quick
-              Add</button>
-          </div>
-        </div>
-
+      <!-- Grid Cards (Dynamic Catalog) -->
+      <div id="drinksGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Dynamic cards will be rendered here -->
       </div>
     </section>
+
+    <!-- Dynamic Custom Categories Sections Container -->
+    <div id="customSectionsContainer" class="space-y-16"></div>
 
     <!-- 4. Owner Shop Section -->
     <section id="owner" class="scroll-mt-24 pt-6 border-t border-line">
       <div class="bg-[#FFFDF0] rounded-3xl border border-line p-8 md:p-12 shadow-xs">
-        <div class="max-w-2xl">
-          <span
-            class="text-[11px] uppercase tracking-widest text-amber-900 font-extrabold bg-smile px-3 py-1 rounded-full inline-block shadow-xs">ABOUT
-            OUR SHOP</span>
-          <h2 class="text-2xl font-extrabold text-gray-900 mt-3 mb-4">Korean Smile Snack</h2>
-          <p class="text-sm text-gray-700 leading-relaxed mb-4">
-            Founded with a passion for comforting, joyful Korean foods and bakery treats that bring a smile to
-            every bite. We specialize in oven 🥨 Fresh Korean twisted donuts are ready!
-            🍩 Soft, sweet, and freshly made every day.
-            🥭 Mango donuts, filled donuts, sesame bread, and fresh juices ,
-            and spicy ramyeon noodles served fresh daily.
-          </p>
-          <div class="grid grid-cols-2 sm:grid-cols-3 gap-6 pt-5 border-t border-line/80 text-xs">
-            <div>
-              <p class="text-amber-800 uppercase font-bold tracking-wider">Location</p>
-              <p class="font-semibold text-gray-900 mt-1">Chip Mong Sen Sok</p>
+        <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-8">
+          <div class="max-w-2xl">
+            <span
+              class="text-[11px] uppercase tracking-widest text-amber-900 font-extrabold bg-smile px-3 py-1 rounded-full inline-block shadow-xs">ABOUT
+              OUR SHOP</span>
+
+            <div class="flex items-center gap-3.5 mt-3 mb-4">
+              <img src="/logo.png" alt="Korean Smile Snack Logo"
+                class="w-12 h-12 sm:w-14 sm:h-14 object-contain rounded-full bg-white p-1 border border-line shadow-xs shrink-0">
+              <h2 class="text-2xl sm:text-3xl font-extrabold text-gray-900">Korean Smile Snack</h2>
             </div>
-            <div>
-              <p class="text-amber-800 uppercase font-bold tracking-wider">Opening Time</p>
-              <p class="font-semibold text-gray-900 mt-1">Open: 7:00am to 5:00pm <br>(Mon-Sat)<br /> </p>
+
+            <p class="text-sm text-gray-700 leading-relaxed mb-4">
+              Founded with a passion for comforting, joyful Korean foods and bakery treats that bring a smile to
+              every bite. We specialize in oven 🥨 Fresh Korean twisted donuts are ready!
+              🍩 Soft, sweet, and freshly made every day.
+              🥭 Mango donuts, filled donuts, sesame bread, and fresh juices ,
+              and spicy ramyeon noodles served fresh daily.
+            </p>
+            <div class="grid grid-cols-2 sm:grid-cols-3 gap-6 pt-5 border-t border-line/80 text-xs">
+              <div>
+                <p class="text-amber-800 uppercase font-bold tracking-wider">Location</p>
+                <p class="font-semibold text-gray-900 mt-1">Chip Mong Sen Sok</p>
+              </div>
+              <div>
+                <p class="text-amber-800 uppercase font-bold tracking-wider">Opening Time</p>
+                <p class="font-semibold text-gray-900 mt-1">Open: 7:00am to 5:00pm <br>(Mon-Sat)<br /> </p>
+              </div>
+              <div>
+                <p class="text-amber-800 uppercase font-bold tracking-wider">Contact Us</p>
+                <p class="font-semibold text-gray-900 mt-1"> 096 418 0360</p>
+              </div>
             </div>
-            <div>
-              <p class="text-amber-800 uppercase font-bold tracking-wider">Contact Us</p>
-              <p class="font-semibold text-gray-900 mt-1"> 096 418 0360</p>
-            </div>
+          </div>
+
+          <!-- Decorative Large Logo Badge -->
+          <div class="hidden lg:flex flex-col items-center justify-center p-6 bg-white/70 rounded-3xl border border-line shadow-xs shrink-0 self-center">
+            <img src="/logo.png" alt="Korean Smile Snack Logo"
+              class="w-36 h-36 xl:w-44 xl:h-44 object-contain rounded-full hover:scale-105 transition duration-300">
+            <span class="mt-3 text-[11px] font-extrabold text-amber-900 tracking-wider uppercase bg-amber-50 px-3 py-1 rounded-full border border-amber-200/60">Authentic Taste</span>
           </div>
         </div>
       </div>
@@ -476,32 +304,276 @@
 
 
   <footer class="border-t border-line py-8 text-center text-xs text-amber-900/60 bg-white/40">
-    © 2026 Korean Smile Snack • All rights reserved.
+    <div class="max-w-7xl mx-auto px-6 flex items-center justify-center">
+      <span>© 2026 Korean Smile Snack • All rights reserved.</span>
+    </div>
   </footer>
 
   <script>
-    function showDetails(title, price, desc) {
-      document.getElementById('modalTitle').innerText = title;
-      document.getElementById('modalPrice').innerText = price;
-      document.getElementById('modalDesc').innerText = desc;
-      document.getElementById('detailModal').classList.remove('hidden');
+    const STORAGE_KEY = 'korean_smile_catalog';
+    const HERO_STORAGE_KEY = 'korean_smile_hero_slides';
+    const CATEGORIES_STORAGE_KEY = 'korean_smile_categories';
+
+    const DEFAULT_HERO_SLIDES = [
+      { id: 1, title: "Official Korean Smile Snack Store Banner", img: "/hero.jpg" },
+      { id: 2, title: "Seoul good. So delicious.", img: "/hero-2.png" },
+      { id: 3, title: "Fresh Korean Street Bites", img: "https://images.unsplash.com/photo-1590301157890-4810ed352733?auto=format&fit=crop&w=1600&q=80" }
+    ];
+
+    const DEFAULT_CATEGORIES = [
+      { id: 'cat-bread', name: 'Korean Bread', subtitle: 'Freshly baked twice daily • 7:00 AM - 5:00 PM' },
+      { id: 'cat-food', name: 'Food & Noodles', subtitle: 'Authentic Korean Street Food & Ramen' },
+      { id: 'cat-drinks', name: 'Drinks', subtitle: 'Popular drinks, carbonated drinks, and authentic brews' }
+    ];
+
+    const DEFAULT_CATALOG = [
+      { id: 1, name: "Cream Cheese Garlic Bread", cat: "Korean Bread", price: "$13.00", badge: "⭐ Fan favorite", inStock: true, img: "https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=800&q=80", desc: "Sweetened cream cheese nestled in a scored brioche bun soaked in sweet roasted garlic custard butter." },
+      { id: 2, name: "Sweet Red Bean Bun (Danpat)", cat: "Korean Bread", price: "$4.50", badge: "🔥 Best Seller", inStock: true, img: "https://images.unsplash.com/photo-1586444248902-2f64eddc13df?auto=format&fit=crop&w=800&q=80", desc: "Traditional artisan sweet red bean filling wrapped in ultra-soft pillowy milk dough, crowned with black sesame seeds." },
+      { id: 3, name: "Twisted Sugar Doughnut (Kkwabaegi)", cat: "Korean Bread", price: "$3.50", badge: "⚡ Popular", inStock: true, img: "https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=800&q=80", desc: "Chewy glutinous rice dough fried golden and dusted in cinnamon sugar." },
+      { id: 4, name: "Ramen Noodles", cat: "Food & Noodles", price: "$12.00", badge: "🔥 Best Seller", inStock: true, img: "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=800&q=80", desc: "Rich bone broth ramen served with scallions, cured yolk, and chewy wheat noodles." },
+      { id: 5, name: "Buldak Spicy Noodles", cat: "Food & Noodles", price: "$14.00", badge: "🔥 Best Seller", inStock: true, img: "https://images.unsplash.com/photo-1612927601601-6638404737ce?auto=format&fit=crop&w=800&q=80", desc: "Fiery Korean hot chicken stir-fried noodles topped with toasted nori and roasted sesame seeds." },
+      { id: 6, name: "Milkis / Banana Milk Drinks", cat: "Drinks", price: "$12.00", badge: "⚡ Popular", inStock: true, img: "https://images.unsplash.com/photo-1527661591475-527312dd65f5?auto=format&fit=crop&w=800&q=80", desc: "Pack of 4: classic sweet Binggrae banana milk and fizzy Milkis yogurt soft drinks." },
+      { id: 7, name: "Chilsung Cider & Yuzu Ade", cat: "Drinks", price: "$4.00", badge: "🔥 Best Seller", inStock: true, img: "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&w=800&q=80", desc: "Crisp lemon-lime Korean soda served ice-cold with aromatic candied citrus yuzu peel." }
+    ];
+
+    function getCatalog() {
+      try {
+        const stored = localStorage.getItem(STORAGE_KEY);
+        if (stored) {
+          const parsed = JSON.parse(stored);
+          if (Array.isArray(parsed) && parsed.length > 0) return parsed;
+        }
+      } catch (e) {
+        console.error(e);
+      }
+      return DEFAULT_CATALOG;
     }
 
-    function closeDetails() {
-      document.getElementById('detailModal').classList.add('hidden');
+    function getCategories() {
+      try {
+        const stored = localStorage.getItem(CATEGORIES_STORAGE_KEY);
+        if (stored) {
+          const parsed = JSON.parse(stored);
+          if (Array.isArray(parsed) && parsed.length > 0) return parsed;
+        }
+      } catch (e) {
+        console.error(e);
+      }
+      return DEFAULT_CATEGORIES;
     }
 
-    // Hero Image Auto-Scroll Controller (Smooth left & right auto scroll, zero buttons)
-    function initHeroAutoSlider() {
+    function getHeroSlides() {
+      try {
+        const stored = localStorage.getItem(HERO_STORAGE_KEY);
+        if (stored) {
+          const parsed = JSON.parse(stored);
+          if (Array.isArray(parsed) && parsed.length > 0) return parsed;
+        }
+      } catch (e) {
+        console.error(e);
+      }
+      return DEFAULT_HERO_SLIDES;
+    }
+
+    // ==========================================
+    // STOREFRONT PRODUCTS & CATEGORIES
+    // ==========================================
+    function renderStorefrontCatalog() {
+      const items = getCatalog();
+      const categories = getCategories();
+      const breadGrid = document.getElementById('breadGrid');
+      const foodGrid = document.getElementById('foodGrid');
+      const drinksGrid = document.getElementById('drinksGrid');
+      const customSections = document.getElementById('customSectionsContainer');
+      const customNavLinks = document.getElementById('customNavLinks');
+      const mobileCustomNav = document.getElementById('mobileCustomNavLinks');
+
+      if (!breadGrid || !foodGrid || !drinksGrid) return;
+
+      // 1. Standard Category Grids
+      const breadItems = items.filter(p => p.cat === 'Korean Bread');
+      const foodItems = items.filter(p => p.cat === 'Food & Noodles' || p.cat === 'Noodles' || p.cat === 'Food');
+      const drinksItems = items.filter(p => p.cat === 'Drinks');
+
+      breadGrid.innerHTML = breadItems.length > 0
+        ? breadItems.map(p => createCardHtml(p)).join('')
+        : '<p class="col-span-3 text-center text-gray-400 py-8 text-sm">No bakery items available currently.</p>';
+
+      foodGrid.innerHTML = foodItems.length > 0
+        ? foodItems.map(p => createCardHtml(p)).join('')
+        : '<p class="col-span-3 text-center text-gray-400 py-8 text-sm">No food items available currently.</p>';
+
+      drinksGrid.innerHTML = drinksItems.length > 0
+        ? drinksItems.map(p => createCardHtml(p)).join('')
+        : '<p class="col-span-3 text-center text-gray-400 py-8 text-sm">No drinks available currently.</p>';
+
+      // 2. Custom Categories Grids & Navigation
+      const standardNames = ['korean bread', 'food & noodles', 'noodles', 'food', 'drinks'];
+      const customCats = categories.filter(c => !standardNames.includes(c.name.toLowerCase()));
+
+      let customSectionsHtml = '';
+      let customDesktopNavHtml = '';
+      let customMobileNavHtml = '';
+
+      customCats.forEach(cat => {
+        const catItems = items.filter(p => p.cat.toLowerCase() === cat.name.toLowerCase());
+        const slug = sanitizeId(cat.name);
+
+        // Add to navigation links
+        customDesktopNavHtml += `
+          <a href="#cat-${slug}"
+            class="hover:text-black hover:underline decoration-smile decoration-2 underline-offset-8 transition whitespace-nowrap">
+            ${escapeHtml(cat.name)}
+          </a>
+        `;
+
+        customMobileNavHtml += `
+          <a href="#cat-${slug}"
+            class="mobile-nav-link flex items-center justify-between py-2.5 px-3 rounded-xl hover:bg-smile-light transition">
+            <span class="flex items-center gap-2.5">
+              <span class="w-2 h-2 rounded-full bg-smile"></span>
+              ${escapeHtml(cat.name)}
+            </span>
+            <span class="text-xs text-amber-800/70 font-medium">${catItems.length} items</span>
+          </a>
+        `;
+
+        // Render category section if it has items or is declared
+        customSectionsHtml += `
+          <section id="cat-${slug}" class="scroll-mt-24">
+            <div class="flex items-baseline justify-between mb-6 pb-2 border-b border-line">
+              <div>
+                <div class="flex items-center gap-2">
+                  <span class="w-2.5 h-2.5 rounded-full bg-smile"></span>
+                  <h2 class="text-2xl font-bold tracking-tight text-gray-900">${escapeHtml(cat.name)}</h2>
+                </div>
+                <p class="text-xs text-amber-800/80 uppercase tracking-widest font-semibold mt-1">
+                  ${escapeHtml(cat.subtitle || `Authentic ${cat.name} selections`)}
+                </p>
+              </div>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              ${catItems.length > 0 
+                ? catItems.map(p => createCardHtml(p)).join('') 
+                : `<p class="col-span-3 text-center text-gray-400 py-8 text-sm">No items in ${escapeHtml(cat.name)} currently.</p>`}
+            </div>
+          </section>
+        `;
+      });
+
+      if (customSections) customSections.innerHTML = customSectionsHtml;
+      if (customNavLinks) customNavLinks.innerHTML = customDesktopNavHtml;
+      if (mobileCustomNav) mobileCustomNav.innerHTML = customMobileNavHtml;
+    }
+
+    function createCardHtml(p) {
+      const isAvailable = p.inStock !== false;
+      const cleanDesc = (p.desc || 'Freshly prepared daily with authentic ingredients.').replace(/'/g, "\\'").replace(/"/g, '&quot;');
+      const cleanName = (p.name || '').replace(/'/g, "\\'").replace(/"/g, '&quot;');
+      const cleanPrice = (p.price || '').replace(/'/g, "\\'");
+
+      return `
+        <div class="group bg-white p-3.5 rounded-2xl border border-line shadow-xs hover:shadow-md hover:border-amber-300 transition duration-300 flex flex-col justify-between">
+          <div>
+            <div class="relative aspect-square w-full rounded-xl overflow-hidden bg-amber-50 mb-3">
+              <img src="${p.img}" alt="${cleanName}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500 ${!isAvailable ? 'grayscale opacity-75' : ''}">
+              ${p.badge ? `
+                <div class="absolute top-3 left-3">
+                  <span class="bg-smile text-gray-950 font-extrabold text-[11px] px-2.5 py-1 rounded-md shadow-xs flex items-center gap-1">
+                    ${p.badge}
+                  </span>
+                </div>
+              ` : ''}
+              ${!isAvailable ? `
+                <div class="absolute inset-0 bg-black/40 backdrop-blur-[2px] flex items-center justify-center">
+                  <span class="bg-rose-600 text-white font-extrabold text-xs px-3 py-1 rounded-lg uppercase tracking-wider shadow-md">Sold Out</span>
+                </div>
+              ` : ''}
+            </div>
+            <p class="text-[11px] uppercase tracking-widest text-amber-700 font-bold mb-0.5">${(p.cat || '').toUpperCase()}</p>
+            <h3 class="text-base font-bold text-gray-900 group-hover:text-amber-900 transition">${p.name}</h3>
+          </div>
+          <div class="flex items-center justify-between mt-3 text-sm pt-2 border-t border-line/60">
+            <span class="font-extrabold text-gray-950 text-base">${p.price}</span>
+            ${isAvailable ? `
+              <button onclick="showDetails('${cleanName}', '${cleanPrice}', '${cleanDesc}')"
+                class="px-3 py-1.5 rounded-lg bg-smile-light hover:bg-smile text-gray-900 font-bold text-xs border border-amber-200/80 shadow-xs transition">Quick Add</button>
+            ` : `
+              <button disabled
+                class="px-3 py-1.5 rounded-lg bg-gray-100 text-gray-400 font-bold text-xs border border-gray-200 cursor-not-allowed">Sold Out</button>
+            `}
+          </div>
+        </div>
+      `;
+    }
+
+    // ==========================================
+    // HERO AUTO-SLIDER (DYNAMIC UPLOADS)
+    // ==========================================
+    let heroAutoTimer = null;
+
+    function renderHeroSlider() {
       const track = document.getElementById('sliderTrack');
       const slider = document.getElementById('heroSlider');
       if (!track || !slider) return;
 
-      const totalRealSlides = 3;
-      const slideInterval = 2500;     // Faster auto-scroll (2.5 seconds per slide)
+      const slides = getHeroSlides();
+      if (!slides || slides.length === 0) return;
+
+      if (slides.length === 1) {
+        // Single banner: no auto-scroll or looping needed
+        track.innerHTML = `
+          <div class="w-full h-full shrink-0 relative bg-black">
+            <img src="${slides[0].img}" alt="${escapeHtml(slides[0].title)}" class="w-full h-full object-cover object-center select-none pointer-events-none">
+          </div>
+        `;
+        track.style.transform = 'none';
+        track.style.transition = 'none';
+        if (heroAutoTimer) clearInterval(heroAutoTimer);
+        return;
+      }
+
+      // 2 or more banners: clone last at start and first at end for seamless looping
+      const firstSlide = slides[0];
+      const lastSlide = slides[slides.length - 1];
+
+      let slidesHtml = `
+        <div class="w-full h-full shrink-0 relative bg-black">
+          <img src="${lastSlide.img}" alt="${escapeHtml(lastSlide.title)}" class="w-full h-full object-cover object-center select-none pointer-events-none">
+        </div>
+      `;
+
+      slides.forEach(s => {
+        slidesHtml += `
+          <div class="w-full h-full shrink-0 relative bg-black">
+            <img src="${s.img}" alt="${escapeHtml(s.title)}" class="w-full h-full object-cover object-center select-none pointer-events-none">
+          </div>
+        `;
+      });
+
+      slidesHtml += `
+        <div class="w-full h-full shrink-0 relative bg-black">
+          <img src="${firstSlide.img}" alt="${escapeHtml(firstSlide.title)}" class="w-full h-full object-cover object-center select-none pointer-events-none">
+        </div>
+      `;
+
+      track.innerHTML = slidesHtml;
+      initHeroAutoSlider(slides.length);
+    }
+
+    function initHeroAutoSlider(totalRealSlides) {
+      const track = document.getElementById('sliderTrack');
+      const slider = document.getElementById('heroSlider');
+      if (!track || !slider || totalRealSlides <= 1) return;
+
+      if (heroAutoTimer) {
+        clearInterval(heroAutoTimer);
+        heroAutoTimer = null;
+      }
+
+      const slideInterval = 2500;     // Fast auto-scroll (2.5 seconds per slide)
       const transitionDuration = 400; // Snappy slide transition speed (400ms)
       let currentIndex = 1; // Starts at Slide 1
-      let autoTimer = null;
       let isTransitioning = false;
 
       // Position track at Slide 1 initially
@@ -529,91 +601,87 @@
         moveTo(currentIndex - 1, true);
       }
 
-      // Handle seamless loop on transition end
-      track.addEventListener('transitionend', () => {
+      track.ontransitionend = () => {
         isTransitioning = false;
         if (currentIndex === totalRealSlides + 1) {
-          // Wrapped past slide 3 to clone of slide 1 -> jump to real slide 1
           moveTo(1, false);
         } else if (currentIndex === 0) {
-          // Wrapped before slide 1 to clone of slide 3 -> jump to real slide 3
           moveTo(totalRealSlides, false);
         }
-      });
+      };
 
       function startAutoPlay() {
         stopAutoPlay();
-        autoTimer = setInterval(nextSlide, slideInterval);
+        heroAutoTimer = setInterval(nextSlide, slideInterval);
       }
 
       function stopAutoPlay() {
-        if (autoTimer) {
-          clearInterval(autoTimer);
-          autoTimer = null;
+        if (heroAutoTimer) {
+          clearInterval(heroAutoTimer);
+          heroAutoTimer = null;
         }
       }
 
-      // Pause when cursor hovers over hero banner
-      slider.addEventListener('mouseenter', stopAutoPlay);
-      slider.addEventListener('mouseleave', startAutoPlay);
+      slider.onmouseenter = stopAutoPlay;
+      slider.onmouseleave = startAutoPlay;
 
-      // Touch Swipe & Mouse Drag Support (Scroll left & right interactively)
+      // Touch & Mouse Drag Handlers
       let startX = 0;
-      let currentX = 0;
       let isDragging = false;
 
-      function onPointerStart(x) {
+      slider.ontouchstart = (e) => {
         stopAutoPlay();
-        startX = x;
-        currentX = x;
+        if (e.touches && e.touches.length > 0) startX = e.touches[0].clientX;
+      };
+
+      slider.ontouchend = (e) => {
+        if (e.changedTouches && e.changedTouches.length > 0) {
+          const diff = startX - e.changedTouches[0].clientX;
+          if (Math.abs(diff) > 40) {
+            if (diff > 0) nextSlide();
+            else prevSlide();
+          }
+        }
+        startAutoPlay();
+      };
+
+      slider.onmousedown = (e) => {
+        stopAutoPlay();
+        startX = e.clientX;
         isDragging = true;
-      }
+      };
 
-      function onPointerMove(x) {
-        if (!isDragging) return;
-        currentX = x;
-      }
-
-      function onPointerEnd() {
+      window.onmouseup = (e) => {
         if (!isDragging) return;
         isDragging = false;
-        const diff = startX - currentX;
+        const diff = startX - e.clientX;
         if (Math.abs(diff) > 40) {
           if (diff > 0) nextSlide();
           else prevSlide();
         }
         startAutoPlay();
-      }
+      };
 
-      // Mobile Touch events
-      slider.addEventListener('touchstart', (e) => {
-        if (e.touches && e.touches.length > 0) onPointerStart(e.touches[0].clientX);
-      }, { passive: true });
-
-      slider.addEventListener('touchmove', (e) => {
-        if (e.touches && e.touches.length > 0) onPointerMove(e.touches[0].clientX);
-      }, { passive: true });
-
-      slider.addEventListener('touchend', onPointerEnd, { passive: true });
-
-      // Desktop Mouse drag events
-      slider.addEventListener('mousedown', (e) => {
-        onPointerStart(e.clientX);
-      });
-
-      window.addEventListener('mousemove', (e) => {
-        if (isDragging) onPointerMove(e.clientX);
-      });
-
-      window.addEventListener('mouseup', () => {
-        if (isDragging) onPointerEnd();
-      });
-
-      // Start auto scroll
       startAutoPlay();
     }
 
-    // Mobile Hamburger Menu Controller
+    // ==========================================
+    // DETAIL MODAL
+    // ==========================================
+    function showDetails(title, price, desc) {
+      document.getElementById('modalTitle').innerText = title;
+      document.getElementById('modalPrice').innerText = price;
+      document.getElementById('modalDesc').innerText = desc;
+      document.getElementById('detailModal').classList.remove('hidden');
+    }
+
+    function closeDetails() {
+      document.getElementById('detailModal').classList.add('hidden');
+    }
+
+    // ==========================================
+    // MOBILE MENU
+    // ==========================================
     function initMobileMenu() {
       const btn = document.getElementById('mobileMenuBtn');
       const menu = document.getElementById('mobileMenu');
@@ -639,18 +707,17 @@
         }
       }
 
-      btn.addEventListener('click', (e) => {
+      btn.onclick = (e) => {
         e.stopPropagation();
         toggleMenu();
+      };
+
+      // Close menu when clicking link
+      menu.addEventListener('click', (e) => {
+        if (e.target.closest('a')) toggleMenu(false);
       });
 
-      // Close menu when any navigation link is clicked
-      const links = menu.querySelectorAll('.mobile-nav-link');
-      links.forEach(link => {
-        link.addEventListener('click', () => toggleMenu(false));
-      });
-
-      // Close when clicking outside of the header
+      // Close when clicking outside
       document.addEventListener('click', (e) => {
         const header = btn.closest('header');
         if (header && !header.contains(e.target)) {
@@ -659,14 +726,36 @@
       });
     }
 
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', () => {
-        initHeroAutoSlider();
-        initMobileMenu();
-      });
-    } else {
-      initHeroAutoSlider();
+    function escapeHtml(str) {
+      if (!str) return '';
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;');
+    }
+
+    function sanitizeId(str) {
+      return (str || '').replace(/[^a-zA-Z0-9]/g, '-').toLowerCase();
+    }
+
+    // Real-time synchronization: updates storefront automatically when admin tab changes data
+    window.addEventListener('storage', () => {
+      renderStorefrontCatalog();
+      renderHeroSlider();
+    });
+
+    // Boot
+    function initApp() {
+      renderStorefrontCatalog();
+      renderHeroSlider();
       initMobileMenu();
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initApp);
+    } else {
+      initApp();
     }
   </script>
 </body>
