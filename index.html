@@ -1,51 +1,674 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Korean Smile Snack | Authentic Street Food & Treats</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/src/style.css" />
-  </head>
-  <body class="min-h-screen bg-[#0f1117] text-gray-100 flex flex-col justify-between selection:bg-rose-500 selection:text-white">
-    <!-- Header -->
-    <header class="sticky top-0 z-50 glass-panel border-b border-white/10 px-6 py-4 flex items-center justify-between">
-      <div class="flex items-center gap-3">
-        <span class="text-2xl">🍢</span>
-        <span class="text-xl font-bold tracking-tight text-white">Korean Smile Snack</span>
-      </div>
-      <div class="flex items-center gap-3">
-        <span class="glass-badge text-xs px-3 py-1.5 rounded-full text-rose-300 font-medium">✨ Open Now</span>
-      </div>
-    </header>
+<html lang="en" class="scroll-smooth">
 
-    <!-- Main Content -->
-    <main class="flex-1 flex flex-col items-center justify-center px-4 py-16 text-center max-w-3xl mx-auto">
-      <div class="glass-badge text-sm px-4 py-1.5 rounded-full text-amber-300 font-medium mb-6 inline-flex items-center gap-2">
-        <span>🇰🇷</span> Fresh & Crispy Korean Street Treats
-      </div>
-      <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight text-white mb-6 leading-tight">
-        Delicious Korean Snacks That Make You <span class="text-transparent bg-clip-text bg-gradient-to-r from-rose-400 via-amber-300 to-orange-400">Smile</span>
-      </h1>
-      <p class="text-gray-400 text-lg sm:text-xl max-w-xl mx-auto mb-10 leading-relaxed">
-        Experience authentic Korean street food: crispy mozzarella corndogs, sizzling tteokbokki, sweet bungeoppang, and more.
-      </p>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Korean Smile Snack </title>
+  <link rel="icon" type="image/png" href="/logo.png">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+KR:wght@400;500;700;900&display=swap"
+    rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', '"Noto Sans KR"', 'sans-serif'],
+          },
+          colors: {
+            smile: {
+              DEFAULT: '#FFE100',
+              hover: '#F5D000',
+              light: '#FFF9D2',
+              dark: '#18181B'
+            },
+            brand: '#18181B',
+            surface: '#FEFDF5',
+            surfaceCard: '#FFFFFF',
+            line: '#EFE7CE',
+          }
+        }
+      }
+    }
+  </script>
+</head>
 
-      <div class="flex flex-wrap items-center justify-center gap-4">
-        <a href="#menu" class="px-6 py-3 rounded-xl bg-gradient-to-r from-rose-500 to-amber-500 text-white font-semibold shadow-lg shadow-rose-500/25 hover:opacity-95 transition-all">
-          Explore Menu
+<body class="bg-surface text-[#1F2024] font-sans antialiased min-h-screen selection:bg-smile selection:text-black">
+
+  <!-- Header Navigation -->
+  <header class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-line shadow-xs">
+    <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+      <a href="#" class="flex items-center gap-3 group">
+        <div class="relative">
+          <img src="/logo.png" alt="Korean Smile Snack Logo"
+            class="w-10 h-10 object-contain rounded-full shadow-xs group-hover:scale-110 group-hover:rotate-6 transition duration-300">
+        </div>
+        <div class="flex flex-col">
+          <span class="font-extrabold tracking-tight text-lg text-gray-900 group-hover:text-amber-800 transition">Korean
+            Smile Snack</span>
+
+        </div>
+      </a>
+
+      <!-- Header Navigation Links (Desktop) -->
+      <nav class="hidden md:flex items-center gap-8 text-sm font-semibold text-gray-700">
+        <a href="#bread"
+          class="hover:text-black hover:underline decoration-smile decoration-2 underline-offset-8 transition">Korean
+          Bread</a>
+        <a href="#food"
+          class="hover:text-black hover:underline decoration-smile decoration-2 underline-offset-8 transition">Food</a>
+        <a href="#drinks"
+          class="hover:text-black hover:underline decoration-smile decoration-2 underline-offset-8 transition">Drinks</a>
+        <a href="#owner"
+          class="hover:text-black hover:underline decoration-smile decoration-2 underline-offset-8 transition">About us
         </a>
-        <a href="#contact" class="px-6 py-3 rounded-xl glass-panel text-gray-200 hover:text-white hover:border-white/20 transition-all font-semibold">
-          Contact Us
-        </a>
-      </div>
-    </main>
+      </nav>
 
-    <!-- Footer -->
-    <footer class="border-t border-white/5 py-6 text-center text-sm text-gray-500">
-      <p>© 2026 Korean Smile Snack. All rights reserved.</p>
-    </footer>
-  </body>
+      <!-- Mobile Hamburger Menu Button (Mobile only) -->
+      <button id="mobileMenuBtn" aria-label="Toggle Navigation Menu" aria-expanded="false"
+        class="md:hidden flex items-center justify-center w-9 h-9 rounded-xl bg-amber-50 hover:bg-smile border border-amber-200 text-gray-900 shadow-xs transition active:scale-95 cursor-pointer">
+        <!-- Hamburger 3-line icon -->
+        <svg id="hamburgerOpenIcon" class="w-5 h-5 block" fill="none" stroke="currentColor" stroke-width="2.5"
+          viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+        <!-- Close X icon -->
+        <svg id="hamburgerCloseIcon" class="w-5 h-5 hidden" fill="none" stroke="currentColor" stroke-width="2.5"
+          viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile Navigation Dropdown Menu -->
+    <div id="mobileMenu"
+      class="md:hidden hidden border-t border-line bg-white/95 backdrop-blur-md shadow-lg transition-all duration-300">
+      <nav class="max-w-7xl mx-auto px-6 py-4 flex flex-col space-y-2 text-sm font-bold text-gray-800">
+        <a href="#bread"
+          class="mobile-nav-link flex items-center justify-between py-2.5 px-3 rounded-xl hover:bg-smile-light transition">
+          <span class="flex items-center gap-2.5">
+            <span class="w-2 h-2 rounded-full bg-smile"></span>
+            Korean Bread
+          </span>
+          <span class="text-xs text-amber-800/70 font-medium">Fresh baked daily</span>
+        </a>
+        <a href="#food"
+          class="mobile-nav-link flex items-center justify-between py-2.5 px-3 rounded-xl hover:bg-smile-light transition">
+          <span class="flex items-center gap-2.5">
+            <span class="w-2 h-2 rounded-full bg-smile"></span>
+            Food
+          </span>
+          <span class="text-xs text-amber-800/70 font-medium">Noodles & snacks</span>
+        </a>
+        <a href="#drinks"
+          class="mobile-nav-link flex items-center justify-between py-2.5 px-3 rounded-xl hover:bg-smile-light transition">
+          <span class="flex items-center gap-2.5">
+            <span class="w-2 h-2 rounded-full bg-smile"></span>
+            Drinks
+          </span>
+          <span class="text-xs text-amber-800/70 font-medium">Authentic brews</span>
+        </a>
+        <a href="#owner"
+          class="mobile-nav-link flex items-center justify-between py-2.5 px-3 rounded-xl hover:bg-smile-light transition">
+          <span class="flex items-center gap-2.5">
+            <span class="w-2 h-2 rounded-full bg-smile"></span>
+            About Us
+          </span>
+          <span class="text-xs text-amber-800/70 font-medium">Hours & location</span>
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="max-w-7xl mx-auto px-6 py-10 space-y-16">
+
+    <!-- Hero Image Auto-Slider Section (No buttons, pure image scroll) -->
+    <section id="heroSlider"
+      class="relative rounded-3xl overflow-hidden shadow-2xl border border-line bg-stone-900 group select-none cursor-grab active:cursor-grabbing">
+      <!-- Slides Track Container -->
+      <div class="relative w-full aspect-[16/9] overflow-hidden">
+        <div id="sliderTrack" class="flex w-full h-full will-change-transform">
+
+          <!-- Clone of Slide 3 for seamless loop -->
+          <div class="w-full h-full shrink-0 relative bg-black">
+            <img src="https://images.unsplash.com/photo-1590301157890-4810ed352733?auto=format&fit=crop&w=1600&q=80"
+              alt="Fresh Korean Street Bites"
+              class="w-full h-full object-cover object-center select-none pointer-events-none">
+          </div>
+
+          <!-- Slide 1: Official Korean Smile Snack Store Banner -->
+          <div class="w-full h-full shrink-0 relative">
+            <img src="/hero.jpg" alt="코리안 스마일 스넥 Korean Smile Snacks"
+              class="w-full h-full object-cover object-center select-none pointer-events-none" loading="eager"
+              fetchpriority="high">
+          </div>
+
+          <!-- Slide 2: Seoul good. So delicious. Banner -->
+          <div class="w-full h-full shrink-0 relative bg-[#9B111E] overflow-hidden">
+            <img src="/hero-2.png" alt="Seoul good. So delicious."
+              class="w-full h-[106%] object-cover object-top select-none pointer-events-none">
+          </div>
+
+          <!-- Slide 3: Fresh Crispy Street Treats & Handcrafted Bakes -->
+          <div class="w-full h-full shrink-0 relative bg-black">
+            <img src="https://images.unsplash.com/photo-1590301157890-4810ed352733?auto=format&fit=crop&w=1600&q=80"
+              alt="Fresh Korean Street Bites"
+              class="w-full h-full object-cover object-center select-none pointer-events-none">
+          </div>
+
+          <!-- Clone of Slide 1 for seamless loop -->
+          <div class="w-full h-full shrink-0 relative">
+            <img src="/hero.jpg" alt="코리안 스마일 스넥 Korean Smile Snacks"
+              class="w-full h-full object-cover object-center select-none pointer-events-none">
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 1. Korean Bread Section -->
+    <section id="bread" class="scroll-mt-24">
+      <div class="flex items-baseline justify-between mb-6 pb-2 border-b border-line">
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="w-2.5 h-2.5 rounded-full bg-smile"></span>
+            <h2 class="text-2xl font-bold tracking-tight text-gray-900">Korean Bread</h2>
+          </div>
+          <p class="text-xs text-amber-800/80 uppercase tracking-widest font-semibold mt-1">Freshly baked twice every
+            day • 7:00 AM - 5:00 PM</p>
+        </div>
+      </div>
+
+      <!-- Grid Cards -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+        <!-- Card 1 -->
+        <div
+          class="group bg-white p-3.5 rounded-2xl border border-line shadow-xs hover:shadow-md hover:border-amber-300 transition duration-300">
+          <div class="relative aspect-square w-full rounded-xl overflow-hidden bg-amber-50 mb-3">
+            <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=800&q=80"
+              alt="Cream Cheese Garlic Bread"
+              class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+            <div class="absolute top-3 left-3">
+              <span
+                class="bg-smile text-gray-950 font-extrabold text-[11px] px-2.5 py-1 rounded-md shadow-xs flex items-center gap-1">
+                ⭐ Fan favorite</span>
+            </div>
+          </div>
+          <p class="text-[11px] uppercase tracking-widest text-amber-700 font-bold mb-0.5">KOREAN BREAD</p>
+          <h3 class="text-base font-bold text-gray-900 group-hover:text-amber-900 transition">Cream Cheese Garlic Bread
+          </h3>
+          <div class="flex items-center justify-between mt-2 text-sm pt-2 border-t border-line/60">
+            <span class="font-extrabold text-gray-950 text-base">$13.00</span>
+            <button
+              onclick="showDetails('Cream Cheese Garlic Bread', '$13.00', 'Sweetened cream cheese nestled in a scored brioche bun soaked in sweet roasted garlic custard butter.')"
+              class="px-3 py-1.5 rounded-lg bg-smile-light hover:bg-smile text-gray-900 font-bold text-xs border border-amber-200/80 shadow-xs transition">Quick
+              Add</button>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div
+          class="group bg-white p-3.5 rounded-2xl border border-line shadow-xs hover:shadow-md hover:border-amber-300 transition duration-300">
+          <div class="relative aspect-square w-full rounded-xl overflow-hidden bg-amber-50 mb-3">
+            <img src="https://images.unsplash.com/photo-1586444248902-2f64eddc13df?auto=format&fit=crop&w=800&q=80"
+              alt="Sweet Red Bean Bun" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+            <div class="absolute top-3 left-3">
+              <span
+                class="bg-smile text-gray-950 font-extrabold text-[11px] px-2.5 py-1 rounded-md shadow-xs flex items-center gap-1">
+                🔥 Best Seller</span>
+            </div>
+          </div>
+          <p class="text-[11px] uppercase tracking-widest text-amber-700 font-bold mb-0.5">KOREAN BREAD</p>
+          <h3 class="text-base font-bold text-gray-900 group-hover:text-amber-900 transition">Sweet Red Bean Bun
+            (Danpat)</h3>
+          <div class="flex items-center justify-between mt-2 text-sm pt-2 border-t border-line/60">
+            <span class="font-extrabold text-gray-950 text-base">$4.50</span>
+            <button
+              onclick="showDetails('Sweet Red Bean Bun (Danpat)', '$4.50', 'Traditional artisan sweet red bean filling wrapped in ultra-soft pillowy milk dough, crowned with black sesame seeds.')"
+              class="px-3 py-1.5 rounded-lg bg-smile-light hover:bg-smile text-gray-900 font-bold text-xs border border-amber-200/80 shadow-xs transition">Quick
+              Add</button>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div
+          class="group bg-white p-3.5 rounded-2xl border border-line shadow-xs hover:shadow-md hover:border-amber-300 transition duration-300">
+          <div class="relative aspect-square w-full rounded-xl overflow-hidden bg-amber-50 mb-3">
+            <img src="https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=800&q=80"
+              alt="Twisted Sugar Doughnut"
+              class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+            <div class="absolute top-3 left-3">
+              <span
+                class="bg-smile text-gray-950 font-extrabold text-[11px] px-2.5 py-1 rounded-md shadow-xs flex items-center gap-1">
+                ⚡ Popular</span>
+            </div>
+          </div>
+          <p class="text-[11px] uppercase tracking-widest text-amber-700 font-bold mb-0.5">KOREAN BREAD</p>
+          <h3 class="text-base font-bold text-gray-900 group-hover:text-amber-900 transition">Twisted Sugar Doughnut
+            (Kkwabaegi)</h3>
+          <div class="flex items-center justify-between mt-2 text-sm pt-2 border-t border-line/60">
+            <span class="font-extrabold text-gray-950 text-base">$3.50</span>
+            <button
+              onclick="showDetails('Twisted Sugar Doughnut (Kkwabaegi)', '$3.50', 'Chewy glutinous rice dough fried golden and dusted in cinnamon sugar.')"
+              class="px-3 py-1.5 rounded-lg bg-smile-light hover:bg-smile text-gray-900 font-bold text-xs border border-amber-200/80 shadow-xs transition">Quick
+              Add</button>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Wide Featured Card -->
+      <div
+        class="mt-8 rounded-2xl bg-white border border-line p-5 sm:p-6 shadow-xs hover:border-amber-300 transition duration-300">
+        <div class="relative w-full h-64 md:h-80 rounded-xl overflow-hidden bg-amber-50 mb-4">
+          <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=1200&q=80"
+            alt="Cream Cheese Garlic Bread Wide" class="w-full h-full object-cover">
+          <div class="absolute top-4 left-4">
+            <span
+              class="bg-smile text-gray-950 font-extrabold text-xs px-3 py-1.5 rounded-md shadow-xs flex items-center gap-1.5">
+              ⭐ Signature Duo Set</span>
+          </div>
+        </div>
+        <p class="text-[11px] uppercase tracking-widest text-amber-700 font-bold mb-1">KOREAN BREAD</p>
+        <h3 class="text-xl font-bold text-gray-900">Cream Cheese Garlic Bread Duo Box</h3>
+        <p class="text-sm text-gray-600 mb-4">Korean butter and garlic bread with double cream cheese.</p>
+        <div class="flex items-center justify-between text-base pt-3 border-t border-line/60">
+          <span class="font-extrabold text-gray-900 text-lg">$25.00</span>
+          <button
+            onclick="showDetails('Cream Cheese Garlic Bread Duo Box', '$25.00', 'Two large signature Korean garlic loaves packed into an insulated gift box.')"
+            class="px-4 py-2 rounded-xl bg-smile hover:bg-smile-hover text-gray-950 font-bold text-xs uppercase tracking-wider shadow-xs hover:shadow transition">Quick
+            Add</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. Food Section -->
+    <section id="food" class="scroll-mt-24">
+      <div class="flex items-baseline justify-between mb-6 pb-2 border-b border-line">
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="w-2.5 h-2.5 rounded-full bg-smile"></span>
+            <h2 class="text-2xl font-bold tracking-tight text-gray-900">Food</h2>
+          </div>
+          <p class="text-xs text-amber-800/80 uppercase tracking-widest font-semibold mt-1">Authentic Korean Street Food
+            & Ramen</p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+        <!-- Card 1 -->
+        <div
+          class="group bg-white p-3.5 rounded-2xl border border-line shadow-xs hover:shadow-md hover:border-amber-300 transition duration-300">
+          <div class="relative aspect-square w-full rounded-xl overflow-hidden bg-amber-50 mb-3">
+            <img src="https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=800&q=80"
+              alt="Ramen Noodles" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+            <div class="absolute top-3 left-3">
+              <span
+                class="bg-smile text-gray-950 font-extrabold text-[11px] px-2.5 py-1 rounded-md shadow-xs flex items-center gap-1">
+                🔥 Best Seller</span>
+            </div>
+          </div>
+          <p class="text-[11px] uppercase tracking-widest text-amber-700 font-bold mb-0.5">KOREAN FOOD</p>
+          <h3 class="text-base font-bold text-gray-900 group-hover:text-amber-900 transition">Ramen Noodles</h3>
+          <div class="flex items-center justify-between mt-2 text-sm pt-2 border-t border-line/60">
+            <span class="font-extrabold text-gray-950 text-base">$12.00</span>
+            <button
+              onclick="showDetails('Ramen Noodles', '$12.00', 'Rich bone broth ramen served with scallions, cured yolk, and chewy wheat noodles.')"
+              class="px-3 py-1.5 rounded-lg bg-smile-light hover:bg-smile text-gray-900 font-bold text-xs border border-amber-200/80 shadow-xs transition">Quick
+              Add</button>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div
+          class="group bg-white p-3.5 rounded-2xl border border-line shadow-xs hover:shadow-md hover:border-amber-300 transition duration-300">
+          <div class="relative aspect-square w-full rounded-xl overflow-hidden bg-amber-50 mb-3">
+            <img src="https://images.unsplash.com/photo-1612927601601-6638404737ce?auto=format&fit=crop&w=800&q=80"
+              alt="Buldak Spicy Noodles"
+              class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+            <div class="absolute top-3 left-3">
+              <span
+                class="bg-smile text-gray-950 font-extrabold text-[11px] px-2.5 py-1 rounded-md shadow-xs flex items-center gap-1">
+                🔥 Best Seller</span>
+            </div>
+          </div>
+          <p class="text-[11px] uppercase tracking-widest text-amber-700 font-bold mb-0.5">KOREAN FOOD</p>
+          <h3 class="text-base font-bold text-gray-900 group-hover:text-amber-900 transition">Buldak Spicy Noodles</h3>
+          <div class="flex items-center justify-between mt-2 text-sm pt-2 border-t border-line/60">
+            <span class="font-extrabold text-gray-950 text-base">$14.00</span>
+            <button
+              onclick="showDetails('Buldak Spicy Noodles', '$14.00', 'Fiery Korean hot chicken stir-fried noodles topped with toasted nori and roasted sesame seeds.')"
+              class="px-3 py-1.5 rounded-lg bg-smile-light hover:bg-smile text-gray-900 font-bold text-xs border border-amber-200/80 shadow-xs transition">Quick
+              Add</button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 3. Drinks Section -->
+    <section id="drinks" class="scroll-mt-24">
+      <div class="flex items-baseline justify-between mb-6 pb-2 border-b border-line">
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="w-2.5 h-2.5 rounded-full bg-smile"></span>
+            <h2 class="text-2xl font-bold tracking-tight text-gray-900">Drinks</h2>
+          </div>
+          <p class="text-xs text-amber-800/80 uppercase tracking-widest font-semibold mt-1">Popular drinks, carbonated
+            drinks, and healthy drinks.
+          </p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+        <!-- Card 1 -->
+        <div
+          class="group bg-white p-3.5 rounded-2xl border border-line shadow-xs hover:shadow-md hover:border-amber-300 transition duration-300">
+          <div class="relative aspect-square w-full rounded-xl overflow-hidden bg-amber-50 mb-3">
+            <img src="https://images.unsplash.com/photo-1527661591475-527312dd65f5?auto=format&fit=crop&w=800&q=80"
+              alt="Milkis / Banana Milk Drinks"
+              class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+            <div class="absolute top-3 left-3">
+              <span
+                class="bg-smile text-gray-950 font-extrabold text-[11px] px-2.5 py-1 rounded-md shadow-xs flex items-center gap-1">
+                ⚡ Popular</span>
+            </div>
+          </div>
+          <p class="text-[11px] uppercase tracking-widest text-amber-700 font-bold mb-0.5">DRINKS</p>
+          <h3 class="text-base font-bold text-gray-900 group-hover:text-amber-900 transition">Milkis / Banana Milk
+            Drinks</h3>
+          <div class="flex items-center justify-between mt-2 text-sm pt-2 border-t border-line/60">
+            <span class="font-extrabold text-gray-950 text-base">$12.00</span>
+            <button
+              onclick="showDetails('Milkis / Banana Milk Drinks', '$12.00', 'Pack of 4: classic sweet Binggrae banana milk and fizzy Milkis yogurt soft drinks.')"
+              class="px-3 py-1.5 rounded-lg bg-smile-light hover:bg-smile text-gray-900 font-bold text-xs border border-amber-200/80 shadow-xs transition">Quick
+              Add</button>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div
+          class="group bg-white p-3.5 rounded-2xl border border-line shadow-xs hover:shadow-md hover:border-amber-300 transition duration-300">
+          <div class="relative aspect-square w-full rounded-xl overflow-hidden bg-amber-50 mb-3">
+            <img src="https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&w=800&q=80"
+              alt="Chilsung Cider & Yuzu Ade"
+              class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+            <div class="absolute top-3 left-3">
+              <span
+                class="bg-smile text-gray-950 font-extrabold text-[11px] px-2.5 py-1 rounded-md shadow-xs flex items-center gap-1">
+                🔥 Best Seller</span>
+            </div>
+          </div>
+          <p class="text-[11px] uppercase tracking-widest text-amber-700 font-bold mb-0.5">DRINKS</p>
+          <h3 class="text-base font-bold text-gray-900 group-hover:text-amber-900 transition">Chilsung Cider & Yuzu Ade
+          </h3>
+          <div class="flex items-center justify-between mt-2 text-sm pt-2 border-t border-line/60">
+            <span class="font-extrabold text-gray-950 text-base">$4.00</span>
+            <button
+              onclick="showDetails('Chilsung Cider & Yuzu Ade', '$4.00', 'Crisp lemon-lime Korean soda served ice-cold with aromatic candied citrus yuzu peel.')"
+              class="px-3 py-1.5 rounded-lg bg-smile-light hover:bg-smile text-gray-900 font-bold text-xs border border-amber-200/80 shadow-xs transition">Quick
+              Add</button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 4. Owner Shop Section -->
+    <section id="owner" class="scroll-mt-24 pt-6 border-t border-line">
+      <div class="bg-[#FFFDF0] rounded-3xl border border-line p-8 md:p-12 shadow-xs">
+        <div class="max-w-2xl">
+          <span
+            class="text-[11px] uppercase tracking-widest text-amber-900 font-extrabold bg-smile px-3 py-1 rounded-full inline-block shadow-xs">ABOUT
+            OUR SHOP</span>
+          <h2 class="text-2xl font-extrabold text-gray-900 mt-3 mb-4">Korean Smile Snack</h2>
+          <p class="text-sm text-gray-700 leading-relaxed mb-4">
+            Founded with a passion for comforting, joyful Korean foods and bakery treats that bring a smile to
+            every bite. We specialize in oven 🥨 Fresh Korean twisted donuts are ready!
+            🍩 Soft, sweet, and freshly made every day.
+            🥭 Mango donuts, filled donuts, sesame bread, and fresh juices ,
+            and spicy ramyeon noodles served fresh daily.
+          </p>
+          <div class="grid grid-cols-2 sm:grid-cols-3 gap-6 pt-5 border-t border-line/80 text-xs">
+            <div>
+              <p class="text-amber-800 uppercase font-bold tracking-wider">Location</p>
+              <p class="font-semibold text-gray-900 mt-1">Chip Mong Sen Sok</p>
+            </div>
+            <div>
+              <p class="text-amber-800 uppercase font-bold tracking-wider">Opening Time</p>
+              <p class="font-semibold text-gray-900 mt-1">Open: 7:00am to 5:00pm <br>(Mon-Sat)<br /> </p>
+            </div>
+            <div>
+              <p class="text-amber-800 uppercase font-bold tracking-wider">Contact Us</p>
+              <p class="font-semibold text-gray-900 mt-1"> 096 418 0360</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Quick Add / Detail Info Modal -->
+  <div id="detailModal"
+    class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-sm w-full p-6 shadow-2xl border border-amber-200">
+      <div class="flex items-center gap-2 mb-3">
+        <span class="w-8 h-8 rounded-full bg-smile flex items-center justify-center text-sm shadow-xs">😊</span>
+        <h3 id="modalTitle" class="text-base font-extrabold text-gray-900">Item Details</h3>
+      </div>
+      <p id="modalPrice" class="text-lg font-extrabold text-amber-700 mb-2">$0.00</p>
+      <p id="modalDesc"
+        class="text-xs text-gray-600 leading-relaxed mb-6 bg-amber-50/60 p-3 rounded-xl border border-amber-100"></p>
+      <button onclick="closeDetails()"
+        class="w-full py-2.5 bg-smile hover:bg-smile-hover text-gray-950 text-xs font-extrabold uppercase tracking-wider rounded-xl shadow-xs transition">Got
+        It</button>
+    </div>
+  </div>
+
+
+
+  <footer class="border-t border-line py-8 text-center text-xs text-amber-900/60 bg-white/40">
+    © 2026 Korean Smile Snack • All rights reserved.
+  </footer>
+
+  <script>
+    function showDetails(title, price, desc) {
+      document.getElementById('modalTitle').innerText = title;
+      document.getElementById('modalPrice').innerText = price;
+      document.getElementById('modalDesc').innerText = desc;
+      document.getElementById('detailModal').classList.remove('hidden');
+    }
+
+    function closeDetails() {
+      document.getElementById('detailModal').classList.add('hidden');
+    }
+
+    // Hero Image Auto-Scroll Controller (Smooth left & right auto scroll, zero buttons)
+    function initHeroAutoSlider() {
+      const track = document.getElementById('sliderTrack');
+      const slider = document.getElementById('heroSlider');
+      if (!track || !slider) return;
+
+      const totalRealSlides = 3;
+      const slideInterval = 2500;     // Faster auto-scroll (2.5 seconds per slide)
+      const transitionDuration = 400; // Snappy slide transition speed (400ms)
+      let currentIndex = 1; // Starts at Slide 1
+      let autoTimer = null;
+      let isTransitioning = false;
+
+      // Position track at Slide 1 initially
+      track.style.transition = 'none';
+      track.style.transform = `translateX(-${currentIndex * 100}%)`;
+
+      function moveTo(index, smooth = true) {
+        currentIndex = index;
+        if (smooth) {
+          isTransitioning = true;
+          track.style.transition = `transform ${transitionDuration}ms cubic-bezier(0.2, 0.8, 0.2, 1)`;
+        } else {
+          track.style.transition = 'none';
+        }
+        track.style.transform = `translateX(-${currentIndex * 100}%)`;
+      }
+
+      function nextSlide() {
+        if (isTransitioning) return;
+        moveTo(currentIndex + 1, true);
+      }
+
+      function prevSlide() {
+        if (isTransitioning) return;
+        moveTo(currentIndex - 1, true);
+      }
+
+      // Handle seamless loop on transition end
+      track.addEventListener('transitionend', () => {
+        isTransitioning = false;
+        if (currentIndex === totalRealSlides + 1) {
+          // Wrapped past slide 3 to clone of slide 1 -> jump to real slide 1
+          moveTo(1, false);
+        } else if (currentIndex === 0) {
+          // Wrapped before slide 1 to clone of slide 3 -> jump to real slide 3
+          moveTo(totalRealSlides, false);
+        }
+      });
+
+      function startAutoPlay() {
+        stopAutoPlay();
+        autoTimer = setInterval(nextSlide, slideInterval);
+      }
+
+      function stopAutoPlay() {
+        if (autoTimer) {
+          clearInterval(autoTimer);
+          autoTimer = null;
+        }
+      }
+
+      // Pause when cursor hovers over hero banner
+      slider.addEventListener('mouseenter', stopAutoPlay);
+      slider.addEventListener('mouseleave', startAutoPlay);
+
+      // Touch Swipe & Mouse Drag Support (Scroll left & right interactively)
+      let startX = 0;
+      let currentX = 0;
+      let isDragging = false;
+
+      function onPointerStart(x) {
+        stopAutoPlay();
+        startX = x;
+        currentX = x;
+        isDragging = true;
+      }
+
+      function onPointerMove(x) {
+        if (!isDragging) return;
+        currentX = x;
+      }
+
+      function onPointerEnd() {
+        if (!isDragging) return;
+        isDragging = false;
+        const diff = startX - currentX;
+        if (Math.abs(diff) > 40) {
+          if (diff > 0) nextSlide();
+          else prevSlide();
+        }
+        startAutoPlay();
+      }
+
+      // Mobile Touch events
+      slider.addEventListener('touchstart', (e) => {
+        if (e.touches && e.touches.length > 0) onPointerStart(e.touches[0].clientX);
+      }, { passive: true });
+
+      slider.addEventListener('touchmove', (e) => {
+        if (e.touches && e.touches.length > 0) onPointerMove(e.touches[0].clientX);
+      }, { passive: true });
+
+      slider.addEventListener('touchend', onPointerEnd, { passive: true });
+
+      // Desktop Mouse drag events
+      slider.addEventListener('mousedown', (e) => {
+        onPointerStart(e.clientX);
+      });
+
+      window.addEventListener('mousemove', (e) => {
+        if (isDragging) onPointerMove(e.clientX);
+      });
+
+      window.addEventListener('mouseup', () => {
+        if (isDragging) onPointerEnd();
+      });
+
+      // Start auto scroll
+      startAutoPlay();
+    }
+
+    // Mobile Hamburger Menu Controller
+    function initMobileMenu() {
+      const btn = document.getElementById('mobileMenuBtn');
+      const menu = document.getElementById('mobileMenu');
+      const openIcon = document.getElementById('hamburgerOpenIcon');
+      const closeIcon = document.getElementById('hamburgerCloseIcon');
+
+      if (!btn || !menu) return;
+
+      function toggleMenu(show) {
+        const isCurrentlyHidden = menu.classList.contains('hidden');
+        const willShow = show !== undefined ? show : isCurrentlyHidden;
+
+        if (willShow) {
+          menu.classList.remove('hidden');
+          openIcon.classList.add('hidden');
+          closeIcon.classList.remove('hidden');
+          btn.setAttribute('aria-expanded', 'true');
+        } else {
+          menu.classList.add('hidden');
+          openIcon.classList.remove('hidden');
+          closeIcon.classList.add('hidden');
+          btn.setAttribute('aria-expanded', 'false');
+        }
+      }
+
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        toggleMenu();
+      });
+
+      // Close menu when any navigation link is clicked
+      const links = menu.querySelectorAll('.mobile-nav-link');
+      links.forEach(link => {
+        link.addEventListener('click', () => toggleMenu(false));
+      });
+
+      // Close when clicking outside of the header
+      document.addEventListener('click', (e) => {
+        const header = btn.closest('header');
+        if (header && !header.contains(e.target)) {
+          toggleMenu(false);
+        }
+      });
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', () => {
+        initHeroAutoSlider();
+        initMobileMenu();
+      });
+    } else {
+      initHeroAutoSlider();
+      initMobileMenu();
+    }
+  </script>
+</body>
+
 </html>
