@@ -12,6 +12,33 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+KR:wght@400;500;700;900&display=swap"
     rel="stylesheet">
+
+  <!-- ========================================== -->
+  <!-- FIREBASE SCRIPTS (LIVE CUSTOMER SYNC)      -->
+  <!-- ========================================== -->
+  <script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-database-compat.js"></script>
+
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyCW1zuvy5OdLVPefaxg-bXWn6AdhiXLZX4",
+      authDomain: "korean-smile-snack.firebaseapp.com",
+      databaseURL: "https://korean-smile-snack-default-rtdb.asia-southeast1.firebasedatabase.app",
+      projectId: "korean-smile-snack",
+      storageBucket: "korean-smile-snack.firebasestorage.app",
+      messagingSenderId: "829390236552",
+      appId: "1:829390236552:web:d802af2565ffc521b1283d",
+      measurementId: "G-3EZENHXXK1"
+    };
+
+    try {
+      firebase.initializeApp(firebaseConfig);
+      window.rtdb = firebase.database();
+    } catch (e) {
+      console.warn("Firebase initialization waiting for connection:", e);
+    }
+  </script>
+
   <script>
     tailwind.config = {
       theme: {
@@ -50,14 +77,14 @@
         <div class="flex flex-col">
           <span class="font-extrabold tracking-tight text-lg text-gray-900 group-hover:text-amber-800 transition">Korean
             Smile Snack</span>
-
         </div>
       </a>
 
       <!-- Header Navigation Links (Desktop) -->
       <nav class="hidden md:flex items-center gap-6 text-sm font-semibold text-gray-700">
         <a href="#bread"
-          class="hover:text-black hover:underline decoration-smile decoration-2 underline-offset-8 transition">Korean Bread</a>
+          class="hover:text-black hover:underline decoration-smile decoration-2 underline-offset-8 transition">Korean
+          Bread</a>
         <a href="#food"
           class="hover:text-black hover:underline decoration-smile decoration-2 underline-offset-8 transition">Food</a>
         <a href="#drinks"
@@ -65,18 +92,17 @@
         <!-- Dynamically injected links for custom categories -->
         <span id="customNavLinks" class="flex items-center gap-6"></span>
         <a href="#owner"
-          class="hover:text-black hover:underline decoration-smile decoration-2 underline-offset-8 transition">About Us</a>
+          class="hover:text-black hover:underline decoration-smile decoration-2 underline-offset-8 transition">About
+          Us</a>
       </nav>
 
       <!-- Mobile Hamburger Menu Button (Mobile only) -->
       <button id="mobileMenuBtn" aria-label="Toggle Navigation Menu" aria-expanded="false"
         class="md:hidden flex items-center justify-center w-9 h-9 rounded-xl bg-amber-50 hover:bg-smile border border-amber-200 text-gray-900 shadow-xs transition active:scale-95 cursor-pointer">
-        <!-- Hamburger 3-line icon -->
         <svg id="hamburgerOpenIcon" class="w-5 h-5 block" fill="none" stroke="currentColor" stroke-width="2.5"
           viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
         </svg>
-        <!-- Close X icon -->
         <svg id="hamburgerCloseIcon" class="w-5 h-5 hidden" fill="none" stroke="currentColor" stroke-width="2.5"
           viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
@@ -112,7 +138,6 @@
           </span>
           <span class="text-xs text-amber-800/70 font-medium">Authentic brews</span>
         </a>
-        <!-- Dynamic mobile links for custom categories -->
         <div id="mobileCustomNavLinks" class="flex flex-col space-y-2"></div>
         <a href="#owner"
           class="mobile-nav-link flex items-center justify-between py-2.5 px-3 rounded-xl hover:bg-smile-light transition">
@@ -128,46 +153,11 @@
 
   <main class="max-w-7xl mx-auto px-6 py-10 space-y-16">
 
-    <!-- Hero Image Auto-Slider Section (No buttons, pure image scroll) -->
+    <!-- Hero Image Auto-Slider Section -->
     <section id="heroSlider"
       class="relative rounded-3xl overflow-hidden shadow-2xl border border-line bg-stone-900 group select-none cursor-grab active:cursor-grabbing">
-      <!-- Slides Track Container -->
       <div class="relative w-full aspect-[16/9] overflow-hidden">
         <div id="sliderTrack" class="flex w-full h-full will-change-transform">
-
-          <!-- Clone of Slide 3 for seamless loop -->
-          <div class="w-full h-full shrink-0 relative bg-black">
-            <img src="https://images.unsplash.com/photo-1590301157890-4810ed352733?auto=format&fit=crop&w=1600&q=80"
-              alt="Fresh Korean Street Bites"
-              class="w-full h-full object-cover object-center select-none pointer-events-none">
-          </div>
-
-          <!-- Slide 1: Official Korean Smile Snack Store Banner -->
-          <div class="w-full h-full shrink-0 relative">
-            <img src="./images/hero.jpg" alt="코리안 스마일 스넥 Korean Smile Snacks"
-              class="w-full h-full object-cover object-center select-none pointer-events-none" loading="eager"
-              fetchpriority="high">
-          </div>
-
-          <!-- Slide 2: Seoul good. So delicious. Banner -->
-          <div class="w-full h-full shrink-0 relative bg-[#9B111E] overflow-hidden">
-            <img src="./images/hero.png" alt="Seoul good. So delicious."
-              class="w-full h-[106%] object-cover object-top select-none pointer-events-none">
-          </div>
-
-          <!-- Slide 3: Fresh Crispy Street Treats & Handcrafted Bakes -->
-          <div class="w-full h-full shrink-0 relative bg-black">
-            <img src="https://images.unsplash.com/photo-1590301157890-4810ed352733?auto=format&fit=crop&w=1600&q=80"
-              alt="Fresh Korean Street Bites"
-              class="w-full h-full object-cover object-center select-none pointer-events-none">
-          </div>
-
-          <!-- Clone of Slide 1 for seamless loop -->
-          <div class="w-full h-full shrink-0 relative">
-            <img src="./images/hero.jpg" alt="코리안 스마일 스넥 Korean Smile Snacks"
-              class="w-full h-full object-cover object-center select-none pointer-events-none">
-          </div>
-
         </div>
       </div>
     </section>
@@ -185,11 +175,8 @@
         </div>
       </div>
 
-      <!-- Grid Cards (Dynamic Catalog) -->
       <div id="breadGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        <!-- Dynamic cards will be rendered here -->
       </div>
-
     </section>
 
     <!-- 2. Food Section -->
@@ -205,9 +192,7 @@
         </div>
       </div>
 
-      <!-- Grid Cards (Dynamic Catalog) -->
       <div id="foodGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        <!-- Dynamic cards will be rendered here -->
       </div>
     </section>
 
@@ -225,9 +210,7 @@
         </div>
       </div>
 
-      <!-- Grid Cards (Dynamic Catalog) -->
       <div id="drinksGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        <!-- Dynamic cards will be rendered here -->
       </div>
     </section>
 
@@ -273,10 +256,13 @@
           </div>
 
           <!-- Decorative Large Logo Badge -->
-          <div class="hidden lg:flex flex-col items-center justify-center p-6 bg-white/70 rounded-3xl border border-line shadow-xs shrink-0 self-center">
+          <div
+            class="hidden lg:flex flex-col items-center justify-center p-6 bg-white/70 rounded-3xl border border-line shadow-xs shrink-0 self-center">
             <img src="./images/logo.png" alt="Korean Smile Snack Logo"
               class="w-36 h-36 xl:w-44 xl:h-44 object-contain rounded-full hover:scale-105 transition duration-300">
-            <span class="mt-3 text-[11px] font-extrabold text-amber-900 tracking-wider uppercase bg-amber-50 px-3 py-1 rounded-full border border-amber-200/60">Authentic Taste</span>
+            <span
+              class="mt-3 text-[11px] font-extrabold text-amber-900 tracking-wider uppercase bg-amber-50 px-3 py-1 rounded-full border border-amber-200/60">Authentic
+              Taste</span>
           </div>
         </div>
       </div>
@@ -285,8 +271,7 @@
   </main>
 
   <!-- Quick Add / Detail Info Modal -->
-  <div id="detailModal"
-    onclick="if (event.target === this) closeDetails()"
+  <div id="detailModal" onclick="if (event.target === this) closeDetails()"
     class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4 overscroll-contain">
     <div class="bg-white rounded-3xl max-w-sm w-full p-6 shadow-2xl border border-amber-200 overscroll-contain">
       <div class="flex items-center gap-2 mb-3">
@@ -301,8 +286,6 @@
         It</button>
     </div>
   </div>
-
-
 
   <footer class="border-t border-line py-8 text-center text-xs text-amber-900/60 bg-white/40">
     <div class="max-w-7xl mx-auto px-6 flex items-center justify-center">
@@ -377,6 +360,40 @@
     }
 
     // ==========================================
+    // FIREBASE REALTIME LISTENERS
+    // ==========================================
+    function initFirebaseSync() {
+      if (!window.rtdb) return;
+
+      // Listen for products updates
+      window.rtdb.ref('products').on('value', (snapshot) => {
+        const cloudProducts = snapshot.val();
+        if (cloudProducts && Array.isArray(cloudProducts) && cloudProducts.length > 0) {
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(cloudProducts));
+          renderStorefrontCatalog();
+        }
+      });
+
+      // Listen for categories updates
+      window.rtdb.ref('categories').on('value', (snapshot) => {
+        const cloudCats = snapshot.val();
+        if (cloudCats && Array.isArray(cloudCats) && cloudCats.length > 0) {
+          localStorage.setItem(CATEGORIES_STORAGE_KEY, JSON.stringify(cloudCats));
+          renderStorefrontCatalog();
+        }
+      });
+
+      // Listen for hero slides updates
+      window.rtdb.ref('heroSlides').on('value', (snapshot) => {
+        const cloudSlides = snapshot.val();
+        if (cloudSlides && Array.isArray(cloudSlides) && cloudSlides.length > 0) {
+          localStorage.setItem(HERO_STORAGE_KEY, JSON.stringify(cloudSlides));
+          renderHeroSlider();
+        }
+      });
+    }
+
+    // ==========================================
     // STOREFRONT PRODUCTS & CATEGORIES
     // ==========================================
     function renderStorefrontCatalog() {
@@ -420,7 +437,6 @@
         const catItems = items.filter(p => p.cat.toLowerCase() === cat.name.toLowerCase());
         const slug = sanitizeId(cat.name);
 
-        // Add to navigation links
         customDesktopNavHtml += `
           <a href="#cat-${slug}"
             class="hover:text-black hover:underline decoration-smile decoration-2 underline-offset-8 transition whitespace-nowrap">
@@ -439,7 +455,6 @@
           </a>
         `;
 
-        // Render category section if it has items or is declared
         customSectionsHtml += `
           <section id="cat-${slug}" class="scroll-mt-24">
             <div class="flex items-baseline justify-between mb-6 pb-2 border-b border-line">
@@ -454,9 +469,9 @@
               </div>
             </div>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              ${catItems.length > 0 
-                ? catItems.map(p => createCardHtml(p)).join('') 
-                : `<p class="col-span-3 text-center text-gray-400 py-8 text-sm">No items in ${escapeHtml(cat.name)} currently.</p>`}
+              ${catItems.length > 0
+            ? catItems.map(p => createCardHtml(p)).join('')
+            : `<p class="col-span-3 text-center text-gray-400 py-8 text-sm">No items in ${escapeHtml(cat.name)} currently.</p>`}
             </div>
           </section>
         `;
@@ -522,7 +537,6 @@
       if (!slides || slides.length === 0) return;
 
       if (slides.length === 1) {
-        // Single banner: no auto-scroll or looping needed
         track.innerHTML = `
           <div class="w-full h-full shrink-0 relative bg-black">
             <img src="${slides[0].img}" alt="${escapeHtml(slides[0].title)}" class="w-full h-full object-cover object-center select-none pointer-events-none">
@@ -534,7 +548,6 @@
         return;
       }
 
-      // 2 or more banners: clone last at start and first at end for seamless looping
       const firstSlide = slides[0];
       const lastSlide = slides[slides.length - 1];
 
@@ -572,12 +585,11 @@
         heroAutoTimer = null;
       }
 
-      const slideInterval = 2500;     // Fast auto-scroll (2.5 seconds per slide)
-      const transitionDuration = 400; // Snappy slide transition speed (400ms)
-      let currentIndex = 1; // Starts at Slide 1
+      const slideInterval = 2500;
+      const transitionDuration = 400;
+      let currentIndex = 1;
       let isTransitioning = false;
 
-      // Position track at Slide 1 initially
       track.style.transition = 'none';
       track.style.transform = `translateX(-${currentIndex * 100}%)`;
 
@@ -626,7 +638,6 @@
       slider.onmouseenter = stopAutoPlay;
       slider.onmouseleave = startAutoPlay;
 
-      // Touch & Mouse Drag Handlers
       let startX = 0;
       let isDragging = false;
 
@@ -728,12 +739,10 @@
         toggleMenu();
       };
 
-      // Close menu when clicking link
       menu.addEventListener('click', (e) => {
         if (e.target.closest('a')) toggleMenu(false);
       });
 
-      // Close when clicking outside
       document.addEventListener('click', (e) => {
         const header = btn.closest('header');
         if (header && !header.contains(e.target)) {
@@ -755,7 +764,6 @@
       return (str || '').replace(/[^a-zA-Z0-9]/g, '-').toLowerCase();
     }
 
-    // Real-time synchronization: updates storefront automatically when admin tab changes data
     window.addEventListener('storage', () => {
       renderStorefrontCatalog();
       renderHeroSlider();
@@ -766,6 +774,7 @@
       renderStorefrontCatalog();
       renderHeroSlider();
       initMobileMenu();
+      initFirebaseSync();
     }
 
     if (document.readyState === 'loading') {

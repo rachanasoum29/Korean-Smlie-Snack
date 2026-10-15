@@ -12,6 +12,29 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+KR:wght@400;500;700;900&display=swap"
     rel="stylesheet">
+
+  <!-- ========================================== -->
+  <!-- FIREBASE SCRIPTS (LIVE DATABASE SYNC)       -->
+  <!-- ========================================== -->
+  <script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-database-compat.js"></script>
+
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyCW1zuvy5OdLVPefaxg-bXWn6AdhiXLZX4",
+      authDomain: "korean-smile-snack.firebaseapp.com",
+      databaseURL: "https://korean-smile-snack-default-rtdb.asia-southeast1.firebasedatabase.app",
+      projectId: "korean-smile-snack",
+      storageBucket: "korean-smile-snack.firebasestorage.app",
+      messagingSenderId: "829390236552",
+      appId: "1:829390236552:web:d802af2565ffc521b1283d",
+      measurementId: "G-3EZENHXXK1"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+    window.rtdb = firebase.database();
+  </script>
+
   <script>
     tailwind.config = {
       theme: {
@@ -40,7 +63,8 @@
     <div class="max-w-md w-full">
       <!-- Brand Logo & Header -->
       <div class="text-center mb-8">
-        <div class="inline-flex items-center justify-center w-16 h-16 rounded-3xl bg-amber-50 border border-amber-200/80 shadow-xs mb-4">
+        <div
+          class="inline-flex items-center justify-center w-16 h-16 rounded-3xl bg-amber-50 border border-amber-200/80 shadow-xs mb-4">
           <img src="./images/logo.png" alt="Logo" class="w-12 h-12 object-contain">
         </div>
         <h1 class="text-2xl font-extrabold text-gray-900 tracking-tight">Korean Smile Snack</h1>
@@ -50,16 +74,18 @@
       <!-- Login Card -->
       <div class="bg-white border border-gray-200 rounded-3xl p-7 sm:p-8 shadow-xl shadow-amber-900/5">
         <form id="adminLoginForm" onsubmit="handleAdminLogin(event)" class="space-y-4">
-          <!-- Error alert -->
-          <div id="loginErrorMsg" class="hidden p-3 rounded-xl bg-rose-50 border border-rose-200 text-rose-700 text-xs font-semibold flex items-center gap-2">
+          <div id="loginErrorMsg"
+            class="hidden p-3 rounded-xl bg-rose-50 border border-rose-200 text-rose-700 text-xs font-semibold flex items-center gap-2">
             <span>⚠️</span>
             <span id="loginErrorText">Incorrect username or password.</span>
           </div>
 
           <div>
-            <label for="loginUsername" class="block text-xs font-bold text-gray-700 mb-1.5 uppercase tracking-wider">Username</label>
+            <label for="loginUsername"
+              class="block text-xs font-bold text-gray-700 mb-1.5 uppercase tracking-wider">Username</label>
             <div class="relative">
-              <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-gray-400 text-sm">👤</span>
+              <span
+                class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-gray-400 text-sm">👤</span>
               <input type="text" id="loginUsername" required autocomplete="username" placeholder="Enter username"
                 class="w-full pl-10 pr-3.5 py-2.5 text-xs border border-gray-200 rounded-xl bg-gray-50/50 focus:bg-white focus:outline-none focus:border-amber-400 focus:ring-2 focus:ring-amber-200/40 transition">
             </div>
@@ -67,13 +93,18 @@
 
           <div>
             <div class="flex items-center justify-between mb-1.5">
-              <label for="loginPassword" class="block text-xs font-bold text-gray-700 uppercase tracking-wider">Password</label>
+              <label for="loginPassword"
+                class="block text-xs font-bold text-gray-700 uppercase tracking-wider">Password</label>
             </div>
             <div class="relative">
-              <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-gray-400 text-sm">🔒</span>
-              <input type="password" id="loginPassword" required autocomplete="current-password" placeholder="Enter password"
+              <span
+                class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-gray-400 text-sm">🔒</span>
+              <input type="password" id="loginPassword" required autocomplete="current-password"
+                placeholder="Enter password"
                 class="w-full pl-10 pr-10 py-2.5 text-xs border border-gray-200 rounded-xl bg-gray-50/50 focus:bg-white focus:outline-none focus:border-amber-400 focus:ring-2 focus:ring-amber-200/40 transition">
-              <button type="button" onclick="togglePasswordVisibility()" class="absolute inset-y-0 right-0 pr-3.5 flex items-center text-gray-400 hover:text-gray-700 text-xs font-medium" title="Show/Hide Password">
+              <button type="button" onclick="togglePasswordVisibility()"
+                class="absolute inset-y-0 right-0 pr-3.5 flex items-center text-gray-400 hover:text-gray-700 text-xs font-medium"
+                title="Show/Hide Password">
                 <span id="pwdToggleIcon">👁️</span>
               </button>
             </div>
@@ -90,7 +121,8 @@
       </div>
 
       <div class="text-center mt-6">
-        <a href="index.html" class="text-xs text-gray-500 hover:text-gray-900 font-semibold transition inline-flex items-center gap-1">
+        <a href="index.html"
+          class="text-xs text-gray-500 hover:text-gray-900 font-semibold transition inline-flex items-center gap-1">
           <span>←</span> Back to Public Store
         </a>
       </div>
@@ -102,8 +134,8 @@
   <!-- ========================================== -->
   <div id="adminDashboardView" class="hidden flex-1 flex flex-col w-full">
 
-    <!-- Top Bar -->
-    <header class="bg-white border-b border-gray-200 sticky top-0 z-30 px-6 py-3 flex items-center justify-between shadow-xs">
+    <header
+      class="bg-white border-b border-gray-200 sticky top-0 z-30 px-6 py-3 flex items-center justify-between shadow-xs">
       <div class="flex items-center gap-6">
         <div class="flex items-center gap-2.5">
           <img src="./images/logo.png" alt="Logo" class="w-8 h-8 rounded-full object-contain">
@@ -111,7 +143,6 @@
           <span class="text-xs bg-amber-100 text-amber-900 px-2 py-0.5 rounded-full font-bold">Admin</span>
         </div>
 
-        <!-- Navigation Tabs -->
         <nav class="hidden md:flex items-center gap-1.5 bg-gray-100/80 p-1 rounded-xl">
           <button onclick="switchView('products')" id="nav-products"
             class="nav-tab px-3 py-1.5 text-xs font-bold rounded-lg bg-white text-gray-950 shadow-xs transition">
@@ -120,18 +151,19 @@
           <button onclick="switchView('hero')" id="nav-hero"
             class="nav-tab px-3 py-1.5 text-xs font-semibold rounded-lg text-gray-600 hover:text-gray-950 transition flex items-center gap-1.5">
             🖼️ Hero Banners
-            <span id="heroCountBadge" class="bg-amber-100 text-amber-900 text-[10px] font-extrabold px-1.5 py-0.2 rounded-full">3</span>
+            <span id="heroCountBadge"
+              class="bg-amber-100 text-amber-900 text-[10px] font-extrabold px-1.5 py-0.2 rounded-full">3</span>
           </button>
           <button onclick="switchView('categories')" id="nav-categories"
             class="nav-tab px-3 py-1.5 text-xs font-semibold rounded-lg text-gray-600 hover:text-gray-950 transition flex items-center gap-1.5">
             🏷️ Categories
-            <span id="catCountBadge" class="bg-gray-200 text-gray-800 text-[10px] font-extrabold px-1.5 py-0.2 rounded-full">3</span>
+            <span id="catCountBadge"
+              class="bg-gray-200 text-gray-800 text-[10px] font-extrabold px-1.5 py-0.2 rounded-full">3</span>
           </button>
         </nav>
       </div>
 
       <div class="flex items-center gap-3">
-        <!-- Admin Profile & Logout -->
         <div class="flex items-center gap-1.5">
           <button onclick="openChangePasswordModal()" title="Change Username / Password"
             class="px-2.5 py-1.5 text-xs text-gray-600 hover:text-gray-950 hover:bg-gray-100 rounded-lg font-medium transition flex items-center gap-1">
@@ -145,348 +177,354 @@
       </div>
     </header>
 
-  <!-- Mobile Sub-Navigation -->
-  <div class="md:hidden flex items-center justify-around bg-white border-b border-gray-200 px-4 py-2">
-    <button onclick="switchView('products')" id="mobile-nav-products" class="text-xs font-bold px-3 py-1 rounded-lg bg-smile text-black">Products</button>
-    <button onclick="switchView('hero')" id="mobile-nav-hero" class="text-xs font-medium px-3 py-1 rounded-lg text-gray-600">Hero Banners</button>
-    <button onclick="switchView('categories')" id="mobile-nav-categories" class="text-xs font-medium px-3 py-1 rounded-lg text-gray-600">Categories</button>
-  </div>
-
-  <!-- MAIN CONTAINER -->
-  <main class="flex-1 max-w-[1380px] w-full mx-auto px-6 py-8">
-
-    <!-- ========================================== -->
-    <!-- VIEW 1: PRODUCTS CATALOG                   -->
-    <!-- ========================================== -->
-    <div id="view-products" class="space-y-6">
-      <!-- Title & Search Action Bar -->
-      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
-        <div>
-          <h1 class="text-xl font-bold text-gray-900 tracking-tight">Products Catalog</h1>
-          <p class="text-xs text-gray-500 mt-0.5">Manage menu stock status, prices, badges, and category assignments.</p>
-        </div>
-
-        <div class="flex items-center gap-3">
-          <input type="text" id="searchInput" placeholder="Search menu items..." oninput="handleSearch(this.value)"
-            class="px-3.5 py-2 text-xs border border-gray-200 rounded-xl bg-white w-60 focus:outline-none focus:border-amber-400 transition shadow-xs" />
-          <button onclick="openModalForAdd()"
-            class="inline-flex items-center gap-1.5 px-3.5 py-2 bg-black hover:bg-gray-800 text-white text-xs font-bold rounded-xl shadow-xs transition">
-            <span>+</span> Add Product
-          </button>
-          <button onclick="resetToDefaults()" title="Reset menu to default items"
-            class="text-xs text-gray-500 hover:text-gray-900 bg-gray-100 hover:bg-gray-200 px-2.5 py-2 rounded-xl transition font-medium">
-            Reset
-          </button>
-        </div>
-      </div>
-
-      <!-- Category Filter Pills Bar -->
-      <div id="categoryFilterBar" class="flex items-center gap-2 border-b border-gray-200 pb-3 overflow-x-auto">
-        <!-- Dynamic Category Pills -->
-      </div>
-
-      <!-- Products Table (Full Width) -->
-      <div class="bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-xs">
-        <div class="overflow-x-auto">
-          <table class="w-full text-left text-xs">
-            <thead>
-              <tr class="bg-gray-50/75 border-b border-gray-200 text-gray-500 uppercase tracking-wider font-semibold">
-                <th class="py-3.5 px-4 font-bold">Item</th>
-                <th class="py-3.5 px-4 font-bold">Category</th>
-                <th class="py-3.5 px-4 font-bold">Price</th>
-                <th class="py-3.5 px-4 font-bold">Badge</th>
-                <th class="py-3.5 px-4 font-bold">Stock Status</th>
-                <th class="py-3.5 px-4 text-right font-bold">Actions</th>
-              </tr>
-            </thead>
-            <tbody id="productTableBody" class="divide-y divide-gray-100 font-normal">
-              <!-- Dynamic rows -->
-            </tbody>
-          </table>
-        </div>
-      </div>
+    <!-- Mobile Sub-Navigation -->
+    <div class="md:hidden flex items-center justify-around bg-white border-b border-gray-200 px-4 py-2">
+      <button onclick="switchView('products')" id="mobile-nav-products"
+        class="text-xs font-bold px-3 py-1 rounded-lg bg-smile text-black">Products</button>
+      <button onclick="switchView('hero')" id="mobile-nav-hero"
+        class="text-xs font-medium px-3 py-1 rounded-lg text-gray-600">Hero Banners</button>
+      <button onclick="switchView('categories')" id="mobile-nav-categories"
+        class="text-xs font-medium px-3 py-1 rounded-lg text-gray-600">Categories</button>
     </div>
 
-    <!-- ========================================== -->
-    <!-- VIEW 2: HERO BANNER MANAGEMENT             -->
-    <!-- ========================================== -->
-    <div id="view-hero" class="hidden space-y-8">
-      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
-        <div>
-          <h1 class="text-xl font-bold text-gray-900 tracking-tight">Hero Banners Manager</h1>
-          <p class="text-xs text-gray-500 mt-0.5">Upload, replace, and reorder the full-width banners for the auto-scrolling homepage slider.</p>
+    <!-- MAIN CONTAINER -->
+    <main class="flex-1 max-w-[1380px] w-full mx-auto px-6 py-8">
+
+      <!-- ========================================== -->
+      <!-- VIEW 1: PRODUCTS CATALOG                   -->
+      <!-- ========================================== -->
+      <div id="view-products" class="space-y-6">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+          <div>
+            <h1 class="text-xl font-bold text-gray-900 tracking-tight">Products Catalog</h1>
+            <p class="text-xs text-gray-500 mt-0.5">Manage menu stock status, prices, badges, and category assignments.
+            </p>
+          </div>
+
+          <div class="flex items-center gap-3">
+            <input type="text" id="searchInput" placeholder="Search menu items..." oninput="handleSearch(this.value)"
+              class="px-3.5 py-2 text-xs border border-gray-200 rounded-xl bg-white w-60 focus:outline-none focus:border-amber-400 transition shadow-xs" />
+            <button onclick="openModalForAdd()"
+              class="inline-flex items-center gap-1.5 px-3.5 py-2 bg-black hover:bg-gray-800 text-white text-xs font-bold rounded-xl shadow-xs transition">
+              <span>+</span> Add Product
+            </button>
+            <button onclick="resetToDefaults()" title="Reset menu to default items"
+              class="text-xs text-gray-500 hover:text-gray-900 bg-gray-100 hover:bg-gray-200 px-2.5 py-2 rounded-xl transition font-medium">
+              Reset
+            </button>
+          </div>
         </div>
-        <div class="flex items-center gap-2">
-          <button onclick="resetDefaultHeroSlides()" class="text-xs text-gray-600 hover:text-gray-900 bg-gray-100 hover:bg-gray-200 px-3 py-2 rounded-xl font-medium transition">
-            Restore Default Banners
-          </button>
+
+        <div id="categoryFilterBar" class="flex items-center gap-2 border-b border-gray-200 pb-3 overflow-x-auto">
+        </div>
+
+        <div class="bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-xs">
+          <div class="overflow-x-auto">
+            <table class="w-full text-left text-xs">
+              <thead>
+                <tr class="bg-gray-50/75 border-b border-gray-200 text-gray-500 uppercase tracking-wider font-semibold">
+                  <th class="py-3.5 px-4 font-bold">Item</th>
+                  <th class="py-3.5 px-4 font-bold">Category</th>
+                  <th class="py-3.5 px-4 font-bold">Price</th>
+                  <th class="py-3.5 px-4 font-bold">Badge</th>
+                  <th class="py-3.5 px-4 font-bold">Stock Status</th>
+                  <th class="py-3.5 px-4 text-right font-bold">Actions</th>
+                </tr>
+              </thead>
+              <tbody id="productTableBody" class="divide-y divide-gray-100 font-normal">
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
 
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-        <!-- Left: Upload Card & Live Slider Preview (5 cols) -->
-        <div class="lg:col-span-5 space-y-6">
-          <!-- Upload Form Card -->
-          <div class="bg-white border border-gray-200 rounded-2xl p-6 shadow-xs">
-            <h3 class="text-sm font-bold text-gray-900 mb-1 flex items-center gap-2">
-              <span>📤</span> Upload New Hero Image
-            </h3>
-            <p class="text-xs text-gray-500 mb-4">Select an image from your computer or paste an image URL.</p>
+      <!-- ========================================== -->
+      <!-- VIEW 2: HERO BANNER MANAGEMENT             -->
+      <!-- ========================================== -->
+      <div id="view-hero" class="hidden space-y-8">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+          <div>
+            <h1 class="text-xl font-bold text-gray-900 tracking-tight">Hero Banners Manager</h1>
+            <p class="text-xs text-gray-500 mt-0.5">Upload, replace, and reorder the full-width banners for the
+              auto-scrolling homepage slider.</p>
+          </div>
+          <div class="flex items-center gap-2">
+            <button onclick="resetDefaultHeroSlides()"
+              class="text-xs text-gray-600 hover:text-gray-900 bg-gray-100 hover:bg-gray-200 px-3 py-2 rounded-xl font-medium transition">
+              Restore Default Banners
+            </button>
+          </div>
+        </div>
 
-            <div class="space-y-4 text-xs">
-              <!-- Drag & Drop / File Input Box -->
-              <div>
-                <label class="block text-gray-700 font-semibold mb-1.5">Choose Image File</label>
-                <div id="heroDropZone"
-                  class="border-2 border-dashed border-gray-300 hover:border-amber-400 bg-amber-50/20 rounded-2xl p-5 text-center cursor-pointer transition">
-                  <input type="file" id="heroFileInput" accept="image/*" class="hidden" onchange="handleHeroFileSelected(event)">
-                  <div onclick="document.getElementById('heroFileInput').click()" class="space-y-1">
-                    <div class="w-10 h-10 rounded-full bg-smile mx-auto flex items-center justify-center text-lg shadow-xs">📷</div>
-                    <p class="font-bold text-gray-800">Click to upload image</p>
-                    <p class="text-[11px] text-gray-400">PNG, JPG, WebP supported • Auto-optimized</p>
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          <div class="lg:col-span-5 space-y-6">
+            <div class="bg-white border border-gray-200 rounded-2xl p-6 shadow-xs">
+              <h3 class="text-sm font-bold text-gray-900 mb-1 flex items-center gap-2">
+                <span>📤</span> Upload New Hero Image
+              </h3>
+              <p class="text-xs text-gray-500 mb-4">Select an image from your computer or paste an image URL.</p>
+
+              <div class="space-y-4 text-xs">
+                <div>
+                  <label class="block text-gray-700 font-semibold mb-1.5">Choose Image File</label>
+                  <div id="heroDropZone"
+                    class="border-2 border-dashed border-gray-300 hover:border-amber-400 bg-amber-50/20 rounded-2xl p-5 text-center cursor-pointer transition">
+                    <input type="file" id="heroFileInput" accept="image/*" class="hidden"
+                      onchange="handleHeroFileSelected(event)">
+                    <div onclick="document.getElementById('heroFileInput').click()" class="space-y-1">
+                      <div
+                        class="w-10 h-10 rounded-full bg-smile mx-auto flex items-center justify-center text-lg shadow-xs">
+                        📷</div>
+                      <p class="font-bold text-gray-800">Click to upload image</p>
+                      <p class="text-[11px] text-gray-400">PNG, JPG, WebP supported • Auto-optimized</p>
+                    </div>
                   </div>
                 </div>
-              </div>
 
-              <!-- Preview of selected image -->
-              <div id="heroFilePreviewWrap" class="hidden">
-                <p class="font-semibold text-gray-700 mb-1">Image Preview:</p>
-                <div class="relative aspect-[16/9] rounded-xl overflow-hidden bg-gray-100 border border-gray-200">
-                  <img id="heroFilePreviewImg" src="" alt="Hero preview" class="w-full h-full object-cover">
-                  <button onclick="clearHeroFileSelection()" class="absolute top-2 right-2 w-6 h-6 rounded-full bg-black/70 text-white flex items-center justify-center text-xs font-bold hover:bg-black">✕</button>
+                <div id="heroFilePreviewWrap" class="hidden">
+                  <p class="font-semibold text-gray-700 mb-1">Image Preview:</p>
+                  <div class="relative aspect-[16/9] rounded-xl overflow-hidden bg-gray-100 border border-gray-200">
+                    <img id="heroFilePreviewImg" src="" alt="Hero preview" class="w-full h-full object-cover">
+                    <button onclick="clearHeroFileSelection()"
+                      class="absolute top-2 right-2 w-6 h-6 rounded-full bg-black/70 text-white flex items-center justify-center text-xs font-bold hover:bg-black">✕</button>
+                  </div>
                 </div>
-              </div>
 
-              <!-- Alternative URL Input -->
-              <div>
-                <label class="block text-gray-700 font-semibold mb-1">Or Paste Image URL</label>
-                <input type="text" id="heroUrlInput" placeholder="https://images.unsplash.com/..." oninput="handleHeroUrlInput(this.value)"
-                  class="w-full border border-gray-200 rounded-xl p-2.5 focus:outline-none focus:border-amber-400">
-              </div>
+                <div>
+                  <label class="block text-gray-700 font-semibold mb-1">Or Paste Image URL</label>
+                  <input type="text" id="heroUrlInput" placeholder="https://images.unsplash.com/..."
+                    oninput="handleHeroUrlInput(this.value)"
+                    class="w-full border border-gray-200 rounded-xl p-2.5 focus:outline-none focus:border-amber-400">
+                </div>
 
-              <!-- Banner Title / Caption -->
-              <div>
-                <label class="block text-gray-700 font-semibold mb-1">Banner Title / Caption *</label>
-                <input type="text" id="heroTitleInput" placeholder="e.g. Fresh Korean Street Treats & Handcrafted Bakes"
-                  class="w-full border border-gray-200 rounded-xl p-2.5 focus:outline-none focus:border-amber-400">
-              </div>
+                <div>
+                  <label class="block text-gray-700 font-semibold mb-1">Banner Title / Caption *</label>
+                  <input type="text" id="heroTitleInput"
+                    placeholder="e.g. Fresh Korean Street Treats & Handcrafted Bakes"
+                    class="w-full border border-gray-200 rounded-xl p-2.5 focus:outline-none focus:border-amber-400">
+                </div>
 
-              <button onclick="saveHeroSlide()"
-                class="w-full py-2.5 bg-smile hover:bg-smile-hover text-gray-950 font-bold text-xs uppercase tracking-wider rounded-xl shadow-xs transition active:scale-98">
-                + Add Banner To Slider
-              </button>
+                <button onclick="saveHeroSlide()"
+                  class="w-full py-2.5 bg-smile hover:bg-smile-hover text-gray-950 font-bold text-xs uppercase tracking-wider rounded-xl shadow-xs transition active:scale-98">
+                  + Add Banner To Slider
+                </button>
+              </div>
+            </div>
+
+            <div class="bg-amber-50/60 border border-amber-200/60 rounded-2xl p-5 text-xs text-amber-950">
+              <h4 class="font-bold flex items-center gap-1.5 mb-2 text-amber-900">
+                <span>💡</span> About the Hero Slider
+              </h4>
+              <ul class="space-y-1.5 text-gray-700 list-disc list-inside">
+                <li>Changes update the customer homepage <strong>instantly in real time</strong>.</li>
+                <li>Images are auto-scaled to the recommended 16:9 banner proportion.</li>
+                <li>Auto-scrolling is smooth with zero navigation buttons, exactly as configured.</li>
+              </ul>
             </div>
           </div>
 
-          <!-- Hero Carousel Live Info Card -->
-          <div class="bg-amber-50/60 border border-amber-200/60 rounded-2xl p-5 text-xs text-amber-950">
-            <h4 class="font-bold flex items-center gap-1.5 mb-2 text-amber-900">
-              <span>💡</span> About the Hero Slider
-            </h4>
-            <ul class="space-y-1.5 text-gray-700 list-disc list-inside">
-              <li>Changes update the customer homepage <strong>instantly in real time</strong>.</li>
-              <li>Images are auto-scaled to the recommended 16:9 banner proportion.</li>
-              <li>Auto-scrolling is smooth with zero navigation buttons, exactly as configured.</li>
-            </ul>
-          </div>
-        </div>
+          <div class="lg:col-span-7 bg-white border border-gray-200 rounded-2xl p-6 shadow-xs space-y-4">
+            <div class="flex items-center justify-between pb-3 border-b border-gray-200">
+              <h3 class="text-sm font-bold text-gray-900">Current Hero Slides (<span id="heroSlidesTotal">3</span>)</h3>
+              <span class="text-xs text-gray-400">Auto-scrolls left to right</span>
+            </div>
 
-        <!-- Right: Current Active Slides List (7 cols) -->
-        <div class="lg:col-span-7 bg-white border border-gray-200 rounded-2xl p-6 shadow-xs space-y-4">
-          <div class="flex items-center justify-between pb-3 border-b border-gray-200">
-            <h3 class="text-sm font-bold text-gray-900">Current Hero Slides (<span id="heroSlidesTotal">3</span>)</h3>
-            <span class="text-xs text-gray-400">Auto-scrolls left to right</span>
-          </div>
-
-          <div id="heroSlidesList" class="space-y-4">
-            <!-- Dynamic Hero Slide Cards -->
+            <div id="heroSlidesList" class="space-y-4">
+            </div>
           </div>
         </div>
       </div>
-    </div>
 
-    <!-- ========================================== -->
-    <!-- VIEW 3: CATEGORIES MANAGEMENT              -->
-    <!-- ========================================== -->
-    <div id="view-categories" class="hidden space-y-6">
-      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
-        <div>
-          <h1 class="text-xl font-bold text-gray-900 tracking-tight">Categories Manager</h1>
-          <p class="text-xs text-gray-500 mt-0.5">Create custom categories for your menu. New categories automatically appear on the storefront.</p>
-        </div>
-        <button onclick="openCategoryModal()"
-          class="inline-flex items-center gap-1.5 px-3.5 py-2 bg-black hover:bg-gray-800 text-white text-xs font-bold rounded-xl shadow-xs transition">
-          <span>+</span> Add New Category
-        </button>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6" id="categoriesGrid">
-        <!-- Dynamic Category Cards -->
-      </div>
-    </div>
-
-  </main>
-
-  <!-- ========================================== -->
-  <!-- MODAL 1: ADD / EDIT PRODUCT                -->
-  <!-- ========================================== -->
-  <div id="itemModal"
-    onclick="if (event.target === this) closeModal()"
-    class="fixed inset-0 bg-black/40 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4 overscroll-contain">
-    <div class="bg-white rounded-3xl max-w-md w-full p-6 shadow-2xl border border-gray-200 max-h-[90vh] overflow-y-auto overscroll-contain">
-      <div class="flex justify-between items-center mb-4">
-        <h3 id="modalHeading" class="text-sm font-bold text-gray-900">Add New Product</h3>
-        <button onclick="closeModal()" class="text-gray-400 hover:text-gray-700 text-sm font-bold p-1">✕</button>
-      </div>
-
-      <input type="hidden" id="editProductId" value="">
-
-      <div class="space-y-3.5 text-xs">
-        <div>
-          <label class="block text-gray-700 mb-1 font-semibold">Product Name *</label>
-          <input type="text" id="newTitle" placeholder="e.g. Injeolmi Cream Bread"
-            class="w-full border border-gray-200 rounded-xl p-2.5 focus:outline-none focus:border-amber-400">
-        </div>
-
-        <div class="grid grid-cols-2 gap-2.5">
+      <!-- ========================================== -->
+      <!-- VIEW 3: CATEGORIES MANAGEMENT              -->
+      <!-- ========================================== -->
+      <div id="view-categories" class="hidden space-y-6">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
-            <div class="flex items-center justify-between mb-1">
-              <label class="text-gray-700 font-semibold">Category *</label>
-              <button type="button" onclick="openCategoryModal()" class="text-[10px] text-amber-700 hover:underline font-bold">+ New</button>
+            <h1 class="text-xl font-bold text-gray-900 tracking-tight">Categories Manager</h1>
+            <p class="text-xs text-gray-500 mt-0.5">Create custom categories for your menu. New categories automatically
+              appear on the storefront.</p>
+          </div>
+          <button onclick="openCategoryModal()"
+            class="inline-flex items-center gap-1.5 px-3.5 py-2 bg-black hover:bg-gray-800 text-white text-xs font-bold rounded-xl shadow-xs transition">
+            <span>+</span> Add New Category
+          </button>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6" id="categoriesGrid">
+        </div>
+      </div>
+
+    </main>
+
+    <!-- ========================================== -->
+    <!-- MODAL 1: ADD / EDIT PRODUCT                -->
+    <!-- ========================================== -->
+    <div id="itemModal" onclick="if (event.target === this) closeModal()"
+      class="fixed inset-0 bg-black/40 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4 overscroll-contain">
+      <div
+        class="bg-white rounded-3xl max-w-md w-full p-6 shadow-2xl border border-gray-200 max-h-[90vh] overflow-y-auto overscroll-contain">
+        <div class="flex justify-between items-center mb-4">
+          <h3 id="modalHeading" class="text-sm font-bold text-gray-900">Add New Product</h3>
+          <button onclick="closeModal()" class="text-gray-400 hover:text-gray-700 text-sm font-bold p-1">✕</button>
+        </div>
+
+        <input type="hidden" id="editProductId" value="">
+
+        <div class="space-y-3.5 text-xs">
+          <div>
+            <label class="block text-gray-700 mb-1 font-semibold">Product Name *</label>
+            <input type="text" id="newTitle" placeholder="e.g. Injeolmi Cream Bread"
+              class="w-full border border-gray-200 rounded-xl p-2.5 focus:outline-none focus:border-amber-400">
+          </div>
+
+          <div class="grid grid-cols-2 gap-2.5">
+            <div>
+              <div class="flex items-center justify-between mb-1">
+                <label class="text-gray-700 font-semibold">Category *</label>
+                <button type="button" onclick="openCategoryModal()"
+                  class="text-[10px] text-amber-700 hover:underline font-bold">+ New</button>
+              </div>
+              <select id="newCategory"
+                class="w-full border border-gray-200 rounded-xl p-2.5 focus:outline-none focus:border-amber-400 bg-white">
+              </select>
             </div>
-            <select id="newCategory"
+            <div>
+              <label class="block text-gray-700 mb-1 font-semibold">Price ($) *</label>
+              <input type="text" id="newPrice" placeholder="13.00"
+                class="w-full border border-gray-200 rounded-xl p-2.5 focus:outline-none focus:border-amber-400">
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-gray-700 mb-1 font-semibold">Badge</label>
+            <select id="newBadge"
               class="w-full border border-gray-200 rounded-xl p-2.5 focus:outline-none focus:border-amber-400 bg-white">
-              <!-- Dynamically populated categories -->
+              <option value="⭐ Fan favorite">⭐ Fan favorite</option>
+              <option value="🔥 Best Seller">🔥 Best Seller</option>
+              <option value="⚡ Popular">⚡ Popular</option>
+              <option value="✨ Signature">✨ Signature</option>
+              <option value="🌿 Vegan">🌿 Vegan</option>
+              <option value="">None</option>
             </select>
           </div>
+
           <div>
-            <label class="block text-gray-700 mb-1 font-semibold">Price ($) *</label>
-            <input type="text" id="newPrice" placeholder="13.00"
-              class="w-full border border-gray-200 rounded-xl p-2.5 focus:outline-none focus:border-amber-400">
+            <label class="block text-gray-700 mb-1 font-semibold">Description</label>
+            <textarea id="newDesc" rows="2" placeholder="Taste description and ingredients..."
+              class="w-full border border-gray-200 rounded-xl p-2.5 focus:outline-none focus:border-amber-400"></textarea>
           </div>
-        </div>
 
-        <div>
-          <label class="block text-gray-700 mb-1 font-semibold">Badge</label>
-          <select id="newBadge"
-            class="w-full border border-gray-200 rounded-xl p-2.5 focus:outline-none focus:border-amber-400 bg-white">
-            <option value="⭐ Fan favorite">⭐ Fan favorite</option>
-            <option value="🔥 Best Seller">🔥 Best Seller</option>
-            <option value="⚡ Popular">⚡ Popular</option>
-            <option value="✨ Signature">✨ Signature</option>
-            <option value="🌿 Vegan">🌿 Vegan</option>
-            <option value="">None</option>
-          </select>
-        </div>
-
-        <div>
-          <label class="block text-gray-700 mb-1 font-semibold">Description</label>
-          <textarea id="newDesc" rows="2" placeholder="Taste description and ingredients..."
-            class="w-full border border-gray-200 rounded-xl p-2.5 focus:outline-none focus:border-amber-400"></textarea>
-        </div>
-
-        <!-- Product Image: Choose Upload File OR URL -->
-        <div>
-          <label class="block text-gray-700 mb-1 font-semibold">Product Image</label>
-          <div class="space-y-2">
-            <div class="flex items-center gap-2">
-              <input type="file" id="productFileInput" accept="image/*" class="hidden" onchange="handleProductFileSelected(event)">
-              <button type="button" onclick="document.getElementById('productFileInput').click()"
-                class="px-3 py-2 bg-gray-100 hover:bg-gray-200 text-gray-800 rounded-xl font-bold flex items-center gap-1.5 transition">
-                <span>📁</span> Upload Image File
-              </button>
-              <span id="productFileNameLabel" class="text-gray-400 text-[11px] truncate max-w-[170px]">No file chosen</span>
+          <div>
+            <label class="block text-gray-700 mb-1 font-semibold">Product Image</label>
+            <div class="space-y-2">
+              <div class="flex items-center gap-2">
+                <input type="file" id="productFileInput" accept="image/*" class="hidden"
+                  onchange="handleProductFileSelected(event)">
+                <button type="button" onclick="document.getElementById('productFileInput').click()"
+                  class="px-3 py-2 bg-gray-100 hover:bg-gray-200 text-gray-800 rounded-xl font-bold flex items-center gap-1.5 transition">
+                  <span>📁</span> Upload Image File
+                </button>
+                <span id="productFileNameLabel" class="text-gray-400 text-[11px] truncate max-w-[170px]">No file
+                  chosen</span>
+              </div>
+              <input type="text" id="newImg" placeholder="Or paste image URL (https://...)"
+                class="w-full border border-gray-200 rounded-xl p-2.5 focus:outline-none focus:border-amber-400">
             </div>
-            <input type="text" id="newImg" placeholder="Or paste image URL (https://...)"
+          </div>
+        </div>
+
+        <div class="flex justify-end gap-2 mt-6 pt-3 border-t border-gray-100">
+          <button onclick="closeModal()"
+            class="px-3.5 py-2 text-xs text-gray-600 hover:text-gray-900 font-medium">Cancel</button>
+          <button onclick="saveProduct()"
+            class="px-5 py-2 text-xs bg-black hover:bg-gray-800 text-white rounded-xl font-bold shadow-xs transition">Save
+            Product</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- MODAL 2: ADD CATEGORY                      -->
+    <!-- ========================================== -->
+    <div id="categoryModal" onclick="if (event.target === this) closeCategoryModal()"
+      class="fixed inset-0 bg-black/40 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4 overscroll-contain">
+      <div class="bg-white rounded-3xl max-w-sm w-full p-6 shadow-2xl border border-gray-200 overscroll-contain">
+        <div class="flex justify-between items-center mb-4">
+          <h3 class="text-sm font-bold text-gray-900">Add New Category</h3>
+          <button onclick="closeCategoryModal()"
+            class="text-gray-400 hover:text-gray-700 text-sm font-bold p-1">✕</button>
+        </div>
+
+        <div class="space-y-3.5 text-xs">
+          <div>
+            <label class="block text-gray-700 mb-1 font-semibold">Category Name *</label>
+            <input type="text" id="categoryNameInput" placeholder="e.g. Snacks & Bites, Dessert, Combos"
+              class="w-full border border-gray-200 rounded-xl p-2.5 focus:outline-none focus:border-amber-400">
+          </div>
+
+          <div>
+            <label class="block text-gray-700 mb-1 font-semibold">Subtitle / Description</label>
+            <input type="text" id="categorySubtitleInput" placeholder="e.g. Sweet daily specialties & crispy bakes"
               class="w-full border border-gray-200 rounded-xl p-2.5 focus:outline-none focus:border-amber-400">
           </div>
         </div>
-      </div>
 
-      <div class="flex justify-end gap-2 mt-6 pt-3 border-t border-gray-100">
-        <button onclick="closeModal()" class="px-3.5 py-2 text-xs text-gray-600 hover:text-gray-900 font-medium">Cancel</button>
-        <button onclick="saveProduct()"
-          class="px-5 py-2 text-xs bg-black hover:bg-gray-800 text-white rounded-xl font-bold shadow-xs transition">Save Product</button>
+        <div class="flex justify-end gap-2 mt-6 pt-3 border-t border-gray-100">
+          <button onclick="closeCategoryModal()"
+            class="px-3.5 py-2 text-xs text-gray-600 hover:text-gray-900 font-medium">Cancel</button>
+          <button onclick="saveNewCategory()"
+            class="px-4 py-2 text-xs bg-smile hover:bg-smile-hover text-gray-950 rounded-xl font-extrabold shadow-xs transition">Create
+            Category</button>
+        </div>
       </div>
     </div>
-  </div>
 
-  <!-- ========================================== -->
-  <!-- MODAL 2: ADD CATEGORY                      -->
-  <!-- ========================================== -->
-  <div id="categoryModal"
-    onclick="if (event.target === this) closeCategoryModal()"
-    class="fixed inset-0 bg-black/40 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4 overscroll-contain">
-    <div class="bg-white rounded-3xl max-w-sm w-full p-6 shadow-2xl border border-gray-200 overscroll-contain">
-      <div class="flex justify-between items-center mb-4">
-        <h3 class="text-sm font-bold text-gray-900">Add New Category</h3>
-        <button onclick="closeCategoryModal()" class="text-gray-400 hover:text-gray-700 text-sm font-bold p-1">✕</button>
-      </div>
-
-      <div class="space-y-3.5 text-xs">
-        <div>
-          <label class="block text-gray-700 mb-1 font-semibold">Category Name *</label>
-          <input type="text" id="categoryNameInput" placeholder="e.g. Snacks & Bites, Dessert, Combos"
-            class="w-full border border-gray-200 rounded-xl p-2.5 focus:outline-none focus:border-amber-400">
+    <!-- ========================================== -->
+    <!-- MODAL 3: CHANGE ADMIN CREDENTIALS          -->
+    <!-- ========================================== -->
+    <div id="changePasswordModal" onclick="if (event.target === this) closeChangePasswordModal()"
+      class="fixed inset-0 bg-black/40 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4 overscroll-contain">
+      <div class="bg-white rounded-3xl max-w-sm w-full p-6 shadow-2xl border border-gray-200 overscroll-contain">
+        <div class="flex justify-between items-center mb-4">
+          <h3 class="text-sm font-bold text-gray-900">Change Admin Credentials</h3>
+          <button onclick="closeChangePasswordModal()"
+            class="text-gray-400 hover:text-gray-700 text-sm font-bold p-1">✕</button>
         </div>
 
-        <div>
-          <label class="block text-gray-700 mb-1 font-semibold">Subtitle / Description</label>
-          <input type="text" id="categorySubtitleInput" placeholder="e.g. Sweet daily specialties & crispy bakes"
-            class="w-full border border-gray-200 rounded-xl p-2.5 focus:outline-none focus:border-amber-400">
+        <div class="space-y-3 text-xs">
+          <div>
+            <label class="block text-gray-700 mb-1 font-semibold">Admin Username *</label>
+            <input type="text" id="newAdminUsername" placeholder="e.g. admin"
+              class="w-full border border-gray-200 rounded-xl p-2.5 focus:outline-none focus:border-amber-400">
+          </div>
+          <div>
+            <label class="block text-gray-700 mb-1 font-semibold">New Password *</label>
+            <input type="password" id="newAdminPassword" placeholder="Enter new password"
+              class="w-full border border-gray-200 rounded-xl p-2.5 focus:outline-none focus:border-amber-400">
+          </div>
+          <div>
+            <label class="block text-gray-700 mb-1 font-semibold">Confirm Password *</label>
+            <input type="password" id="confirmAdminPassword" placeholder="Re-enter new password"
+              class="w-full border border-gray-200 rounded-xl p-2.5 focus:outline-none focus:border-amber-400">
+          </div>
         </div>
-      </div>
 
-      <div class="flex justify-end gap-2 mt-6 pt-3 border-t border-gray-100">
-        <button onclick="closeCategoryModal()" class="px-3.5 py-2 text-xs text-gray-600 hover:text-gray-900 font-medium">Cancel</button>
-        <button onclick="saveNewCategory()"
-          class="px-4 py-2 text-xs bg-smile hover:bg-smile-hover text-gray-950 rounded-xl font-extrabold shadow-xs transition">Create Category</button>
+        <div class="flex justify-end gap-2 mt-6 pt-3 border-t border-gray-100">
+          <button onclick="closeChangePasswordModal()"
+            class="px-3.5 py-2 text-xs text-gray-600 hover:text-gray-900 font-medium">Cancel</button>
+          <button onclick="saveAdminCredentials()"
+            class="px-4 py-2 text-xs bg-smile hover:bg-smile-hover text-gray-950 rounded-xl font-extrabold shadow-xs transition">Update
+            Credentials</button>
+        </div>
       </div>
     </div>
-  </div>
-
-  <!-- ========================================== -->
-  <!-- MODAL 3: CHANGE ADMIN CREDENTIALS          -->
-  <!-- ========================================== -->
-  <div id="changePasswordModal"
-    onclick="if (event.target === this) closeChangePasswordModal()"
-    class="fixed inset-0 bg-black/40 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4 overscroll-contain">
-    <div class="bg-white rounded-3xl max-w-sm w-full p-6 shadow-2xl border border-gray-200 overscroll-contain">
-      <div class="flex justify-between items-center mb-4">
-        <h3 class="text-sm font-bold text-gray-900">Change Admin Credentials</h3>
-        <button onclick="closeChangePasswordModal()" class="text-gray-400 hover:text-gray-700 text-sm font-bold p-1">✕</button>
-      </div>
-
-      <div class="space-y-3 text-xs">
-        <div>
-          <label class="block text-gray-700 mb-1 font-semibold">Admin Username *</label>
-          <input type="text" id="newAdminUsername" placeholder="e.g. admin"
-            class="w-full border border-gray-200 rounded-xl p-2.5 focus:outline-none focus:border-amber-400">
-        </div>
-        <div>
-          <label class="block text-gray-700 mb-1 font-semibold">New Password *</label>
-          <input type="password" id="newAdminPassword" placeholder="Enter new password"
-            class="w-full border border-gray-200 rounded-xl p-2.5 focus:outline-none focus:border-amber-400">
-        </div>
-        <div>
-          <label class="block text-gray-700 mb-1 font-semibold">Confirm Password *</label>
-          <input type="password" id="confirmAdminPassword" placeholder="Re-enter new password"
-            class="w-full border border-gray-200 rounded-xl p-2.5 focus:outline-none focus:border-amber-400">
-        </div>
-      </div>
-
-      <div class="flex justify-end gap-2 mt-6 pt-3 border-t border-gray-100">
-        <button onclick="closeChangePasswordModal()" class="px-3.5 py-2 text-xs text-gray-600 hover:text-gray-900 font-medium">Cancel</button>
-        <button onclick="saveAdminCredentials()"
-          class="px-4 py-2 text-xs bg-smile hover:bg-smile-hover text-gray-950 rounded-xl font-extrabold shadow-xs transition">Update Credentials</button>
-      </div>
-    </div>
-  </div>
 
   </div> <!-- /adminDashboardView -->
 
   <!-- Toast Notification -->
-  <div id="toast" class="fixed bottom-6 right-6 z-50 bg-gray-900 text-white text-xs font-semibold px-4 py-2.5 rounded-xl shadow-lg transition-all duration-300 transform translate-y-10 opacity-0 pointer-events-none flex items-center gap-2">
+  <div id="toast"
+    class="fixed bottom-6 right-6 z-50 bg-gray-900 text-white text-xs font-semibold px-4 py-2.5 rounded-xl shadow-lg transition-all duration-300 transform translate-y-10 opacity-0 pointer-events-none flex items-center gap-2">
     <span id="toastIcon">✓</span>
     <span id="toastMsg">Changes saved!</span>
   </div>
@@ -513,7 +551,6 @@
         if (stored) {
           const parsed = JSON.parse(stored);
           if (parsed && parsed.username && parsed.password) {
-            // Automatically upgrade previous default 'admin' / 'admin123'
             if (parsed.username.toLowerCase() === 'admin' && parsed.password === 'admin123') {
               localStorage.setItem(AUTH_STORAGE_KEY, JSON.stringify(DEFAULT_AUTH));
               return DEFAULT_AUTH;
@@ -565,7 +602,6 @@
         if (errorMsg) errorMsg.classList.add('hidden');
         checkAdminAuth();
 
-        // Boot dashboard views
         renderCategoryFilterPills();
         renderTable();
         updateBadgeCounts();
@@ -712,6 +748,18 @@
     // CATEGORIES MANAGEMENT
     // ==========================================
     function loadCategories() {
+      if (window.rtdb) {
+        window.rtdb.ref('categories').on('value', (snapshot) => {
+          const cloudCats = snapshot.val();
+          if (cloudCats && Array.isArray(cloudCats) && cloudCats.length > 0) {
+            categories = cloudCats;
+            localStorage.setItem(CATEGORIES_STORAGE_KEY, JSON.stringify(categories));
+            renderCategoryFilterPills();
+            updateBadgeCounts();
+          }
+        });
+      }
+
       try {
         const stored = localStorage.getItem(CATEGORIES_STORAGE_KEY);
         if (stored) {
@@ -730,6 +778,10 @@
         localStorage.setItem(CATEGORIES_STORAGE_KEY, JSON.stringify(categories));
         window.dispatchEvent(new Event('storage'));
         updateBadgeCounts();
+
+        if (window.rtdb) {
+          window.rtdb.ref('categories').set(categories);
+        }
       } catch (e) {
         console.error(e);
       }
@@ -885,6 +937,18 @@
     // HERO BANNERS MANAGEMENT & IMAGE UPLOAD
     // ==========================================
     function loadHeroSlides() {
+      if (window.rtdb) {
+        window.rtdb.ref('heroSlides').on('value', (snapshot) => {
+          const cloudSlides = snapshot.val();
+          if (cloudSlides && Array.isArray(cloudSlides) && cloudSlides.length > 0) {
+            heroSlides = cloudSlides;
+            localStorage.setItem(HERO_STORAGE_KEY, JSON.stringify(heroSlides));
+            renderHeroSlides();
+            updateBadgeCounts();
+          }
+        });
+      }
+
       try {
         const stored = localStorage.getItem(HERO_STORAGE_KEY);
         if (stored) {
@@ -903,13 +967,16 @@
         localStorage.setItem(HERO_STORAGE_KEY, JSON.stringify(heroSlides));
         window.dispatchEvent(new Event('storage'));
         updateBadgeCounts();
+
+        if (window.rtdb) {
+          window.rtdb.ref('heroSlides').set(heroSlides);
+        }
       } catch (e) {
-        console.error("Hero save failed (storage full?):", e);
+        console.error("Hero save failed:", e);
         alert("Failed to save hero image. The image file might be too large.");
       }
     }
 
-    // Helper: Resizes & Compresses images in canvas so base64 string remains lightweight
     function compressImageFile(file, maxWidth = 1600, quality = 0.85) {
       return new Promise((resolve, reject) => {
         const reader = new FileReader();
@@ -948,7 +1015,6 @@
         document.getElementById('heroFilePreviewImg').src = stagedHeroImage;
         document.getElementById('heroFilePreviewWrap').classList.remove('hidden');
 
-        // Autofill title if blank
         const titleInput = document.getElementById('heroTitleInput');
         if (!titleInput.value) {
           titleInput.value = file.name.replace(/\.[^/.]+$/, "").replace(/[-_]/g, " ");
@@ -996,7 +1062,6 @@
       saveHeroSlides();
       renderHeroSlides();
 
-      // Reset form
       clearHeroFileSelection();
       document.getElementById('heroUrlInput').value = '';
       document.getElementById('heroTitleInput').value = '';
@@ -1076,9 +1141,22 @@
     }
 
     // ==========================================
-    // PRODUCTS CATALOG & CRUD
+    // PRODUCTS CATALOG & FIREBASE SYNC
     // ==========================================
     function loadCatalog() {
+      // Real-time synchronization from Firebase
+      if (window.rtdb) {
+        window.rtdb.ref('products').on('value', (snapshot) => {
+          const cloudData = snapshot.val();
+          if (cloudData && Array.isArray(cloudData) && cloudData.length > 0) {
+            products = cloudData;
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(products));
+            renderCategoryFilterPills();
+            renderTable();
+          }
+        });
+      }
+
       try {
         const stored = localStorage.getItem(STORAGE_KEY);
         if (stored) {
@@ -1097,6 +1175,11 @@
         localStorage.setItem(STORAGE_KEY, JSON.stringify(products));
         window.dispatchEvent(new Event('storage'));
         renderCategoryFilterPills();
+
+        // Push directly to cloud database
+        if (window.rtdb) {
+          window.rtdb.ref('products').set(products);
+        }
       } catch (e) {
         console.error(e);
       }
@@ -1196,9 +1279,6 @@
       renderTable();
     }
 
-    // ==========================================
-    // MODAL SCROLL LOCK HELPERS
-    // ==========================================
     function lockBodyScroll() {
       const scrollBarWidth = window.innerWidth - document.documentElement.clientWidth;
       if (scrollBarWidth > 0) {
@@ -1215,8 +1295,8 @@
       const pwdModal = document.getElementById('changePasswordModal');
 
       const isAnyModalOpen = (itemModal && !itemModal.classList.contains('hidden')) ||
-                             (catModal && !catModal.classList.contains('hidden')) ||
-                             (pwdModal && !pwdModal.classList.contains('hidden'));
+        (catModal && !catModal.classList.contains('hidden')) ||
+        (pwdModal && !pwdModal.classList.contains('hidden'));
 
       if (!isAnyModalOpen) {
         document.body.style.overflow = '';
@@ -1375,7 +1455,6 @@
       return (str || '').replace(/[^a-zA-Z0-9]/g, '-').toLowerCase();
     }
 
-    // Modal Accessibility: Escape Key & Touch backdrop handling
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') {
         const catModal = document.getElementById('categoryModal');
@@ -1394,7 +1473,7 @@
     ['itemModal', 'categoryModal', 'changePasswordModal'].forEach(id => {
       const el = document.getElementById(id);
       if (el) {
-        el.addEventListener('touchmove', function(e) {
+        el.addEventListener('touchmove', function (e) {
           if (e.target === this) {
             e.preventDefault();
           }
