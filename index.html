@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Korean Smile Snack </title>
-  <link rel="icon" type="image/png" href="/logo.png">
+  <link rel="icon" type="image/png" href="/favicon.png?v=3">
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -245,7 +245,7 @@
 
             <div class="flex items-center gap-3.5 mt-3 mb-4">
               <img src="/logo.png" alt="Korean Smile Snack Logo"
-                class="w-12 h-12 sm:w-14 sm:h-14 object-contain rounded-full bg-white p-1 border border-line shadow-xs shrink-0">
+                class="w-12 h-12 sm:w-14 sm:h-14 object-contain shrink-0">
               <h2 class="text-2xl sm:text-3xl font-extrabold text-gray-900">Korean Smile Snack</h2>
             </div>
 
@@ -286,8 +286,9 @@
 
   <!-- Quick Add / Detail Info Modal -->
   <div id="detailModal"
-    class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
-    <div class="bg-white rounded-3xl max-w-sm w-full p-6 shadow-2xl border border-amber-200">
+    onclick="if (event.target === this) closeDetails()"
+    class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4 overscroll-contain">
+    <div class="bg-white rounded-3xl max-w-sm w-full p-6 shadow-2xl border border-amber-200 overscroll-contain">
       <div class="flex items-center gap-2 mb-3">
         <span class="w-8 h-8 rounded-full bg-smile flex items-center justify-center text-sm shadow-xs">😊</span>
         <h3 id="modalTitle" class="text-base font-extrabold text-gray-900">Item Details</h3>
@@ -673,11 +674,26 @@
       document.getElementById('modalPrice').innerText = price;
       document.getElementById('modalDesc').innerText = desc;
       document.getElementById('detailModal').classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+      document.documentElement.style.overflow = 'hidden';
+      document.body.classList.add('overflow-hidden');
     }
 
     function closeDetails() {
       document.getElementById('detailModal').classList.add('hidden');
+      document.body.style.overflow = '';
+      document.documentElement.style.overflow = '';
+      document.body.classList.remove('overflow-hidden');
     }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        const detailModal = document.getElementById('detailModal');
+        if (detailModal && !detailModal.classList.contains('hidden')) {
+          closeDetails();
+        }
+      }
+    });
 
     // ==========================================
     // MOBILE MENU

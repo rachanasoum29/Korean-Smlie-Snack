@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Admin • Korean Smile Snack</title>
-  <link rel="icon" type="image/png" href="/logo.png">
+  <link rel="icon" type="image/png" href="/favicon.png?v=3">
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -106,7 +106,7 @@
     <header class="bg-white border-b border-gray-200 sticky top-0 z-30 px-6 py-3 flex items-center justify-between shadow-xs">
       <div class="flex items-center gap-6">
         <div class="flex items-center gap-2.5">
-          <img src="/logo.png" alt="Logo" class="w-8 h-8 rounded-full object-contain bg-amber-50 shadow-xs">
+          <img src="/logo.png" alt="Logo" class="w-8 h-8 rounded-full object-contain">
           <span class="font-extrabold text-sm tracking-tight text-gray-900">Korean Smile Snack</span>
           <span class="text-xs bg-amber-100 text-amber-900 px-2 py-0.5 rounded-full font-bold">Admin</span>
         </div>
@@ -131,16 +131,8 @@
       </div>
 
       <div class="flex items-center gap-3">
-        <div class="hidden sm:flex items-center gap-1.5">
-          <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-          <span class="text-xs text-gray-500 font-medium">Synced with Live Store</span>
-        </div>
-        <a href="index.html" target="_blank"
-          class="px-3 py-1.5 text-xs font-bold text-gray-700 hover:text-black bg-gray-100 hover:bg-smile rounded-lg transition flex items-center gap-1">
-          Live Store ↗
-        </a>
         <!-- Admin Profile & Logout -->
-        <div class="flex items-center gap-1.5 pl-2 border-l border-gray-200">
+        <div class="flex items-center gap-1.5">
           <button onclick="openChangePasswordModal()" title="Change Username / Password"
             class="px-2.5 py-1.5 text-xs text-gray-600 hover:text-gray-950 hover:bg-gray-100 rounded-lg font-medium transition flex items-center gap-1">
             <span>👤</span> <span id="adminUsernameDisplay" class="font-bold">korean smile snack</span>
@@ -339,8 +331,9 @@
   <!-- MODAL 1: ADD / EDIT PRODUCT                -->
   <!-- ========================================== -->
   <div id="itemModal"
-    class="fixed inset-0 bg-black/40 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
-    <div class="bg-white rounded-3xl max-w-md w-full p-6 shadow-2xl border border-gray-200 max-h-[90vh] overflow-y-auto">
+    onclick="if (event.target === this) closeModal()"
+    class="fixed inset-0 bg-black/40 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4 overscroll-contain">
+    <div class="bg-white rounded-3xl max-w-md w-full p-6 shadow-2xl border border-gray-200 max-h-[90vh] overflow-y-auto overscroll-contain">
       <div class="flex justify-between items-center mb-4">
         <h3 id="modalHeading" class="text-sm font-bold text-gray-900">Add New Product</h3>
         <button onclick="closeModal()" class="text-gray-400 hover:text-gray-700 text-sm font-bold p-1">✕</button>
@@ -422,8 +415,9 @@
   <!-- MODAL 2: ADD CATEGORY                      -->
   <!-- ========================================== -->
   <div id="categoryModal"
-    class="fixed inset-0 bg-black/40 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
-    <div class="bg-white rounded-3xl max-w-sm w-full p-6 shadow-2xl border border-gray-200">
+    onclick="if (event.target === this) closeCategoryModal()"
+    class="fixed inset-0 bg-black/40 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4 overscroll-contain">
+    <div class="bg-white rounded-3xl max-w-sm w-full p-6 shadow-2xl border border-gray-200 overscroll-contain">
       <div class="flex justify-between items-center mb-4">
         <h3 class="text-sm font-bold text-gray-900">Add New Category</h3>
         <button onclick="closeCategoryModal()" class="text-gray-400 hover:text-gray-700 text-sm font-bold p-1">✕</button>
@@ -455,8 +449,9 @@
   <!-- MODAL 3: CHANGE ADMIN CREDENTIALS          -->
   <!-- ========================================== -->
   <div id="changePasswordModal"
-    class="fixed inset-0 bg-black/40 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
-    <div class="bg-white rounded-3xl max-w-sm w-full p-6 shadow-2xl border border-gray-200">
+    onclick="if (event.target === this) closeChangePasswordModal()"
+    class="fixed inset-0 bg-black/40 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4 overscroll-contain">
+    <div class="bg-white rounded-3xl max-w-sm w-full p-6 shadow-2xl border border-gray-200 overscroll-contain">
       <div class="flex justify-between items-center mb-4">
         <h3 class="text-sm font-bold text-gray-900">Change Admin Credentials</h3>
         <button onclick="closeChangePasswordModal()" class="text-gray-400 hover:text-gray-700 text-sm font-bold p-1">✕</button>
@@ -612,10 +607,12 @@
       document.getElementById('newAdminPassword').value = '';
       document.getElementById('confirmAdminPassword').value = '';
       document.getElementById('changePasswordModal').classList.remove('hidden');
+      lockBodyScroll();
     }
 
     function closeChangePasswordModal() {
       document.getElementById('changePasswordModal').classList.add('hidden');
+      unlockBodyScroll();
     }
 
     function saveAdminCredentials() {
@@ -819,11 +816,13 @@
       document.getElementById('categoryNameInput').value = '';
       document.getElementById('categorySubtitleInput').value = '';
       document.getElementById('categoryModal').classList.remove('hidden');
+      lockBodyScroll();
       setTimeout(() => document.getElementById('categoryNameInput').focus(), 50);
     }
 
     function closeCategoryModal() {
       document.getElementById('categoryModal').classList.add('hidden');
+      unlockBodyScroll();
     }
 
     function saveNewCategory() {
@@ -1197,6 +1196,36 @@
       renderTable();
     }
 
+    // ==========================================
+    // MODAL SCROLL LOCK HELPERS
+    // ==========================================
+    function lockBodyScroll() {
+      const scrollBarWidth = window.innerWidth - document.documentElement.clientWidth;
+      if (scrollBarWidth > 0) {
+        document.body.style.paddingRight = `${scrollBarWidth}px`;
+      }
+      document.body.style.overflow = 'hidden';
+      document.documentElement.style.overflow = 'hidden';
+      document.body.classList.add('overflow-hidden');
+    }
+
+    function unlockBodyScroll() {
+      const itemModal = document.getElementById('itemModal');
+      const catModal = document.getElementById('categoryModal');
+      const pwdModal = document.getElementById('changePasswordModal');
+
+      const isAnyModalOpen = (itemModal && !itemModal.classList.contains('hidden')) ||
+                             (catModal && !catModal.classList.contains('hidden')) ||
+                             (pwdModal && !pwdModal.classList.contains('hidden'));
+
+      if (!isAnyModalOpen) {
+        document.body.style.overflow = '';
+        document.documentElement.style.overflow = '';
+        document.body.style.paddingRight = '';
+        document.body.classList.remove('overflow-hidden');
+      }
+    }
+
     function openModalForAdd() {
       document.getElementById('modalHeading').innerText = 'Add New Product';
       document.getElementById('editProductId').value = '';
@@ -1208,6 +1237,7 @@
       document.getElementById('newImg').value = '';
       document.getElementById('productFileNameLabel').innerText = 'No file chosen';
       document.getElementById('itemModal').classList.remove('hidden');
+      lockBodyScroll();
     }
 
     function openModalForEdit(id) {
@@ -1224,10 +1254,12 @@
       document.getElementById('newImg').value = item.img || '';
       document.getElementById('productFileNameLabel').innerText = item.img?.startsWith('data:') ? 'Uploaded image loaded' : 'No file chosen';
       document.getElementById('itemModal').classList.remove('hidden');
+      lockBodyScroll();
     }
 
     function closeModal() {
       document.getElementById('itemModal').classList.add('hidden');
+      unlockBodyScroll();
     }
 
     async function handleProductFileSelected(event) {
@@ -1342,6 +1374,33 @@
     function sanitizeId(str) {
       return (str || '').replace(/[^a-zA-Z0-9]/g, '-').toLowerCase();
     }
+
+    // Modal Accessibility: Escape Key & Touch backdrop handling
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        const catModal = document.getElementById('categoryModal');
+        const itemModal = document.getElementById('itemModal');
+        const pwdModal = document.getElementById('changePasswordModal');
+        if (catModal && !catModal.classList.contains('hidden')) {
+          closeCategoryModal();
+        } else if (itemModal && !itemModal.classList.contains('hidden')) {
+          closeModal();
+        } else if (pwdModal && !pwdModal.classList.contains('hidden')) {
+          closeChangePasswordModal();
+        }
+      }
+    });
+
+    ['itemModal', 'categoryModal', 'changePasswordModal'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) {
+        el.addEventListener('touchmove', function(e) {
+          if (e.target === this) {
+            e.preventDefault();
+          }
+        }, { passive: false });
+      }
+    });
 
     // INITIAL EXECUTION
     const isAuthenticated = checkAdminAuth();
